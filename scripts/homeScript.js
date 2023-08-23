@@ -24,3 +24,5 @@ function pauseMusic() {
 function onClickCard(page) {
   open(page, "_self");
 }
+
+console.log("debugger")
