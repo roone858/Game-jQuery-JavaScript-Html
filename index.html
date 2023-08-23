@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Js Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style/homeStyle.css" />
+  </head>
+  <body>
+    <div class="home">
+      <audio
+        id="soundMb3Id"
+        src="assets/sound/home.mp4"
+        allow="autoplay"
+        loop="loop"
+      ></audio>
+      <div class="card" id="card-1" onclick="onClickCard('number.html')">
+        <div class="card-content">
+          <img src="assets/image/number.avif" alt="" class="cardImg" />
+          <br /><br />
+          <p class="card-text">Number</p>
+        </div>
+      </div>
+      <div class="card" id="card-2" onclick="onClickCard('letters.html')">
+        <div class="card-content">
+          <img src="assets/image/ABC.avif" alt="" class="cardImg" />
+          <br /><br />
+          <p class="card-text">Letters</p>
+        </div>
+      </div>
+      <div class="card" id="card-3" onclick="onClickCard('animals.html')">
+        <div class="card-content">
+          <img src="assets/image/animal width.avif" alt="" class="cardImg" />
+          <br /><br />
+          <p class="card-text">Animals</p>
+        </div>
+      </div>
+      <div class="card" id="card-4" onclick="onClickCard('game.html')">
+        <div class="card-content">
+          <img src="assets/image/car-game.jpg" alt="" class="cardImg" />
+          <br /><br />
+          <p class="card-text">Car game</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sound" id="soundMb3">
+      <a href="assets/image/animal width.avif" style="width: 20px"></a>
+    </div>
+
+    <script src="scripts/homeScript.js"></script>
+  </body>
+</html>
