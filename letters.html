@@ -1,12 +1,62 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Js Project</title>
-    <link rel="stylesheet" href="style/lettersStyle.css" />
-  </head>
-  <body>
-    <h1>Welcome Safia Your job is to be here</h1>
 
-    <script src="scripts/letters.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Alphabetical Game</title>
+  <link rel="stylesheet" href="./style/lettersStyle.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    #game-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .letter {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0099cc;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .letter.clicked {
+      background-color: #00cc99;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Click the Alphabetical Letters</h1>
+  <div id="game-container">
+    <!-- Letters will be added here dynamically -->
+  </div>
+  <!-- Add a container for displaying the lessons -->
+  <div id="lesson-container">
+    <p id="lesson-text">Click on a letter to see the lesson.</p>
+  </div>
+
+<script src="./scripts/letters.js"></script>
+</body>
+
 </html>
