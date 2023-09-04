@@ -1,7 +1,7 @@
 const imagesSrc = [
   {
     src: "./assets/image/home/icons/1a.webp",
-    text: "Stuffed Animals ",
+    text: "Stuffed Animals",
   },
   {
     src: "./assets/image/home/icons/2a.webp",
@@ -13,7 +13,7 @@ const imagesSrc = [
   },
   {
     src: "./assets/image/home/icons/5.webp",
-    text: "Video Games ",
+    text: "Video Games",
   },
 ];
 
