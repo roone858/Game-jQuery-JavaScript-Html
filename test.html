@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          * {
+               box-sizing: border-box;
+          }
+
+          body {
+               /* background-image: url("./assets/image/lettersPage/lesson-background.jpg"); */
+               background-size: 100vw 100vh;
+          }
+
+          .lesson-container ,.drag-container ,.mcq-container  {
+               height: 90vh;
+               display: flex;
+               align-items: center;
+               justify-content: space-around;
+
+          }
+
+          .left {
+               margin-top: 3rem;
+
+
+          }
+
+          .left img {
+               width: 250px;
+
+          }
+
+          .right {}
+
+          .right img {
+               width: 250px;
+               /* transform: translateY(-20%); */
+
+
+          }
+
+          button {
+               position: relative;
+               left: 80%;
+          }
+          .d-none{
+               display: none;
+          }
+     </style>
+</head>
+
+<body>
+     <section class="">
+          <div class="lesson-container">
+
+               <div class="left">
+                    <img src="./assets/image/lettersPage/letters/a.png" alt="">
+               </div>
+               <div class="right">
+
+                    <div class="shape" style="display: flex; align-items: center; flex-direction: column;">
+                         <img src="./assets/image/lettersPage/images/apple.png" alt="">
+                         <h1>Apple</h1>
+                    </div>
+               </div>
+          </div>
+          <div class="drag-container d-none">
+
+               <h1> drag and drop container</h1>
+          </div>
+          <div class="mcq-container d-none">
+               <h4>mcq container</h4>
+          </div>
+          <button data-flag="0" id="nxt-btn">Next</button>
+     </section>
+     <script>
+          const nextBtn = document.getElementById("nxt-btn")
+
+          const lessonContainer = document.querySelector(".lesson-container")
+          const dragContainer = document.querySelector(".drag-container")
+          const mcqContainer = document.querySelector(".mcq-container")
+          nextBtn.addEventListener('click', () => {
+               let flag = parseInt(nextBtn.getAttribute("data-flag"))
+               console.log(flag)
+               if (flag == 0) {
+
+                    lessonContainer.classList.add("d-none")
+                    dragContainer.classList.remove("d-none")
+               }
+               if (flag == 1) {
+                    dragContainer.classList.add("d-none")
+                    mcqContainer.classList.remove("d-none")
+               }
+               
+               if (flag == 2) container.textContent = "the end"
+               flag++
+               nextBtn.setAttribute("data-flag", flag)
+          })
+
+
+     </script>
+</body>
+
+</html>

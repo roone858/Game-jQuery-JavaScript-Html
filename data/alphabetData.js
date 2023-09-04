@@ -1,4 +1,3 @@
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const alphabetData = [
   {
     letter: "A",
@@ -132,68 +131,6 @@ const alphabetData = [
     examples: ["zebra", "zipper", "zoo"],
   },
 ];
-
-const gameContainer = document.getElementById("game-container");
-
-alphabetData.forEach((letterObj) => {
-  const letterElement = createLetterElement(letterObj);
-  gameContainer.appendChild(letterElement);
+alphabetData.forEach((letter) => {
+  console.log(letter.examples);
 });
-
-const lessonContainer = document.getElementById("lesson-container");
-
-function createLetterElement(letterObj) {
-  const letterElement = document.createElement("div");
-  letterElement.className = "letter";
-  letterElement.textContent = letterObj.letter;
-  letterElement.addEventListener("click", () => {
-     lessonContainer.innerHTML = `
-<section >
-
-<div class="lesson-container">
-     <div class="left">
-          <img src="./assets/image/lettersPage/letters/${letterObj.letter}.png" alt="">
-     </div>
-     <div class="right">
-
-          <div class="shape" style="display: flex; align-items: center; flex-direction: column;">
-               <img src="./assets/image/lettersPage/images/apple.png" alt="">
-               <h1>Apple</h1>
-          </div>
-     </div>
-</div>
-
-<div class="drag-container d-none">
-     <h1> drag and drop container</h1>
-</div>
-
-<div class="mcq-container d-none">
-     <h4>mcq container</h4>
-</div>
-
-<button onclick=" onNextClick(this) "  data-flag="0" id="nxt-btn">Next</button>
-</section>
-
-`;
-  });
-  return letterElement;
-}
-
-function onNextClick(btn) {
-  const lessonContainer = document.querySelector(".lesson-container");
-  const dragContainer = document.querySelector(".drag-container");
-  const mcqContainer = document.querySelector(".mcq-container");
-  let flag = parseInt(btn.getAttribute("data-flag"));
-  if (flag == 0) {
-    lessonContainer.classList.add("d-none");
-    dragContainer.classList.remove("d-none");
-  }
-  if (flag == 1) {
-    dragContainer.classList.add("d-none");
-    mcqContainer.classList.remove("d-none");
-  }
-
-  if (flag == 2) lessonContainer.textContent = "the end";
-  flag++;
-  btn.setAttribute("data-flag", flag);
-}

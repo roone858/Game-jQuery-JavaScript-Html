@@ -1,0 +1,41 @@
+* {
+     box-sizing: border-box;
+}
+
+body {
+     /* background-image: url("./assets/image/lettersPage/lesson-background.jpg"); */
+     background-size: 100vw 100vh;
+}
+
+.lesson-container ,.drag-container ,.mcq-container  {
+     height: 90vh;
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+
+}
+
+.left {
+     margin-top: 3rem;
+
+
+}
+
+.left img {
+     width: 250px;
+
+}
+
+.right {}
+
+.right img {
+     width: 250px;
+     /* transform: translateY(-20%); */
+
+
+}
+
+
+.d-none{
+     display: none;
+}
