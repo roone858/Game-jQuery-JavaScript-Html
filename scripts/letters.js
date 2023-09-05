@@ -89,7 +89,7 @@ const alphabetData = [
   {
     letter: "R",
     phonetic_sound: "arr",
-    examples: ["rainbow", "robot", "rocket"],
+    examples: ["robot","rainbow" , "rocket"],
   },
   {
     letter: "S",
@@ -147,53 +147,162 @@ function createLetterElement(letterObj) {
   letterElement.className = "letter";
   letterElement.textContent = letterObj.letter;
   letterElement.addEventListener("click", () => {
-     lessonContainer.innerHTML = `
-<section >
-
-<div class="lesson-container">
-     <div class="left">
-          <img src="./assets/image/lettersPage/letters/${letterObj.letter}.png" alt="">
-     </div>
-     <div class="right">
-
-          <div class="shape" style="display: flex; align-items: center; flex-direction: column;">
-               <img src="./assets/image/lettersPage/images/apple.png" alt="">
-               <h1>Apple</h1>
-          </div>
-     </div>
-</div>
-
-<div class="drag-container d-none">
-     <h1> drag and drop container</h1>
-</div>
-
-<div class="mcq-container d-none">
-     <h4>mcq container</h4>
-</div>
-
-<button onclick=" onNextClick(this) "  data-flag="0" id="nxt-btn">Next</button>
-</section>
-
-`;
+    const dataContainer = createDataContainer(letterObj);
+    const dragContainer = createDragContainer();
+    const mcqContainer = createMCQContainer();
+    const nextButton = createNextButton();
+    const prevButton = createPrevButton();
+    gameContainer.style.display = "none";
+    lessonContainer.replaceChildren(dataContainer);
+    lessonContainer.appendChild(dragContainer);
+    lessonContainer.appendChild(mcqContainer);
+    lessonContainer.appendChild(prevButton);
+    lessonContainer.appendChild(nextButton);
   });
   return letterElement;
 }
 
+function createDataContainer(letterObj) {
+  var dataContainer = document.createElement("div");
+  dataContainer.className = "data-container";
+
+  var leftDiv = document.createElement("div");
+  leftDiv.className = "left";
+
+  var imgLeft = document.createElement("img");
+  imgLeft.src = `./assets/image/lettersPage/letters/${letterObj.letter}.png`;
+  imgLeft.alt = "";
+
+  leftDiv.appendChild(imgLeft);
+
+  var rightDiv = document.createElement("div");
+  rightDiv.className = "right";
+
+  var shapeDiv = document.createElement("div");
+  shapeDiv.className = "shape";
+  shapeDiv.style.display = "flex";
+  shapeDiv.style.alignItems = "center";
+  shapeDiv.style.flexDirection = "column";
+
+  var imgShape = document.createElement("img");
+  
+  imgShape.src = `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`;
+  imgShape.alt = "";
+
+  var h1Shape = document.createElement("h1");
+  h1Shape.textContent = letterObj.examples[0];
+
+  shapeDiv.appendChild(imgShape);
+  shapeDiv.appendChild(h1Shape);
+
+  rightDiv.appendChild(shapeDiv);
+
+  dataContainer.appendChild(leftDiv);
+  dataContainer.appendChild(rightDiv);
+
+  return dataContainer;
+}
+
+function createDragContainer() {
+  var dragContainer = document.createElement("div");
+  dragContainer.className = "drag-container d-none";
+  var h1Drag = document.createElement("h1");
+  h1Drag.textContent = "drag and drop container";
+
+  dragContainer.appendChild(h1Drag);
+
+  return dragContainer;
+}
+
+function createMCQContainer() {
+  var mcqContainer = document.createElement("div");
+  mcqContainer.className = "mcq-container d-none";
+
+  var h4MCQ = document.createElement("h4");
+  h4MCQ.textContent = "mcq container";
+
+  mcqContainer.appendChild(h4MCQ);
+
+  return mcqContainer;
+}
+
+function createNextButton() {
+  var buttonElement = document.createElement("button");
+  buttonElement.onclick = function () {
+    onNextClick(this);
+  };
+  buttonElement.dataset.flag = "0";
+  buttonElement.id = "nxt-btn";
+  buttonElement.textContent = "Next";
+
+  return buttonElement;
+}
+function createPrevButton() {
+  var buttonElement = document.createElement("button");
+  buttonElement.onclick = function () {
+    onPrevClick(this);
+  };
+  buttonElement.dataset.flag = "0";
+  buttonElement.id = "prev-btn";
+  buttonElement.textContent = "Previous";
+
+  return buttonElement;
+}
+
 function onNextClick(btn) {
-  const lessonContainer = document.querySelector(".lesson-container");
+  const dataContainer = document.querySelector(".data-container");
   const dragContainer = document.querySelector(".drag-container");
   const mcqContainer = document.querySelector(".mcq-container");
   let flag = parseInt(btn.getAttribute("data-flag"));
-  if (flag == 0) {
-    lessonContainer.classList.add("d-none");
-    dragContainer.classList.remove("d-none");
-  }
-  if (flag == 1) {
-    dragContainer.classList.add("d-none");
-    mcqContainer.classList.remove("d-none");
+  switch (flag) {
+    case 0:
+      dataContainer.classList.add("d-none");
+      dragContainer.classList.remove("d-none");
+      flag++;
+      break;
+    case 1:
+      dragContainer.classList.add("d-none");
+      mcqContainer.classList.remove("d-none");
+      flag++;
+      break;
+
+    case 2:
+      //return to home page
+      break;
+    default:
+      break;
   }
 
-  if (flag == 2) lessonContainer.textContent = "the end";
-  flag++;
   btn.setAttribute("data-flag", flag);
+}
+function onPrevClick(btn) {
+  const dataContainer = document.querySelector(".data-container");
+  const dragContainer = document.querySelector(".drag-container");
+  const mcqContainer = document.querySelector(".mcq-container");
+  const nextBtn = document.getElementById("nxt-btn");
+  const prevBtn = document.getElementById("prev-btn");
+  let flag = parseInt(
+    document.getElementById("nxt-btn").getAttribute("data-flag")
+  );
+  switch (flag) {
+    case 0:
+      gameContainer.style.display = "flex";
+      dataContainer.classList.add("d-none");
+      nextBtn.classList.add("d-none");
+      prevBtn.classList.add("d-none");
+      // return to home page
+      break;
+    case 1:
+      dragContainer.classList.add("d-none");
+      dataContainer.classList.remove("d-none");
+      flag--;
+      break;
+    case 2:
+      mcqContainer.classList.add("d-none");
+      dragContainer.classList.remove("d-none");
+      flag--;
+    default:
+      break;
+  }
+  document.getElementById("nxt-btn").setAttribute("data-flag", flag);
 }
