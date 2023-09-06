@@ -5,7 +5,6 @@ const alphabetData = [
     letter: "A",
     phonetic_sound: "./",
     examples: ["apple", "ant", "alligator"],
-    images: ["./sss/sss/s", ".//aa/s/s/s"],
   },
   {
     letter: "B",
@@ -198,12 +197,9 @@ function createDataContainer(letterObj) {
   word.style = "font-size:4rem ;color:black";
   word.textContent =
     letterObj.examples[0].toUpperCase()[0] + letterObj.examples[0].slice(1);
-
   shapeDiv.appendChild(img);
   shapeDiv.appendChild(word);
-
   rightDiv.appendChild(shapeDiv);
-
   dataContainer.appendChild(leftDiv);
   dataContainer.appendChild(rightDiv);
 
@@ -259,7 +255,6 @@ function createDragGameStructure(word) {
     <div 
     class="matching-pair droppable" 
     ondragover="event.preventDefault()"
-  
     ondrop="insertDropLetter(this)" data-letter=${letters[index]} 
     > </div>
     `;
@@ -281,16 +276,18 @@ function insertDropLetter(div) {
     div.getAttribute("data-letter") ==
     draggingLetter.getAttribute("data-letter")
   ) {
-    div.classList.add("dropped");
     draggingLetter.style = "margin : 0px ";
     div.appendChild(draggingLetter);
-    correctSpan.textContent = Number(correctSpan.textContent) + 1;
+    if (!div.classList.contains("dropped"))
+      correctSpan.textContent = Number(correctSpan.textContent) + 1;
+    div.classList.add("dropped");
 
     if (
       correctSpan.textContent ==
       document.querySelector(".matching-pairs").getAttribute("data-word").length
-    )
+    ) {
       document.getElementById("nxt-btn").classList.remove("d-none");
+    }
   }
 }
 function getDragLetter(img) {
@@ -340,7 +337,7 @@ function onNextClick(btn) {
     case 0:
       dataContainer.classList.add("d-none");
       dragContainer.classList.remove("d-none");
-      btn.classList.add("d-none");
+
       flag++;
       break;
     case 1:
