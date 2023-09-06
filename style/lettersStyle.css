@@ -9,6 +9,36 @@ body {
      background-position: center;
      
 }
+.play-icon {
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 20px;
+  width: 50px;
+  background-image: url("../assets/image/audio-speaker-1.png");
+  height: 50px;
+  background-size: cover;
+  cursor: pointer;
+}
+.play-icon:hover {
+  opacity: 0.8;
+}
+.pause-icon {
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 20px;
+  width: 50px;
+  background-image: url("../assets/image/audio-2.png");
+  height: 50px;
+  background-size: cover;
+  cursor: pointer;
+}
+.pause-icon:hover {
+  opacity: 0.8;
+}
 
 .data-container ,.drag-container ,.mcq-container  {
     min-height: 80vh;
