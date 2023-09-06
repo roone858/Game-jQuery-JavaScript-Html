@@ -1,4 +1,5 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let draggingLetter;
 const alphabetData = [
   {
     letter: "A",
@@ -89,7 +90,7 @@ const alphabetData = [
   {
     letter: "R",
     phonetic_sound: "arr",
-    examples: ["robot","rainbow" , "rocket"],
+    examples: ["robot", "rainbow", "rocket"],
   },
   {
     letter: "S",
@@ -148,7 +149,7 @@ function createLetterElement(letterObj) {
   letterElement.textContent = letterObj.letter;
   letterElement.addEventListener("click", () => {
     const dataContainer = createDataContainer(letterObj);
-    const dragContainer = createDragContainer();
+    const dragContainer = createDragContainer(letterObj);
     const mcqContainer = createMCQContainer();
     const nextButton = createNextButton();
     const prevButton = createPrevButton();
@@ -185,7 +186,7 @@ function createDataContainer(letterObj) {
   shapeDiv.style.flexDirection = "column";
 
   var imgShape = document.createElement("img");
-  
+
   imgShape.src = `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`;
   imgShape.alt = "";
 
@@ -203,17 +204,83 @@ function createDataContainer(letterObj) {
   return dataContainer;
 }
 
-function createDragContainer() {
+function createDragContainer(letterObj) {
   var dragContainer = document.createElement("div");
   dragContainer.className = "drag-container d-none";
-  var h1Drag = document.createElement("h1");
-  h1Drag.textContent = "drag and drop container";
+  var div = document.createElement("div");
+  div.appendChild(createDragGameStructure(letterObj.examples[0]));
 
-  dragContainer.appendChild(h1Drag);
-
+  dragContainer.appendChild(div);
   return dragContainer;
 }
 
+function createDragGameStructure(word) {
+  var scoreSection = document.createElement("section");
+  scoreSection.className = "score";
+
+  var correctSpan = document.createElement("span");
+  correctSpan.className = "correct";
+  correctSpan.textContent = "0";
+
+  var totalSpan = document.createElement("span");
+  totalSpan.className = "total";
+  totalSpan.textContent = "0";
+
+  var playAgainButton = document.createElement("button");
+  playAgainButton.id = "play-again-btn";
+  playAgainButton.textContent = "Play Again";
+
+  scoreSection.appendChild(correctSpan);
+  scoreSection.appendChild(document.createTextNode("/"));
+  scoreSection.appendChild(totalSpan);
+  scoreSection.appendChild(playAgainButton);
+
+  var draggableItemsSection = document.createElement("section");
+  draggableItemsSection.className = "draggable-items";
+  const letters = word.split("");
+  const randomIndices = generateUniqueRandomIndices(letters.length - 1);
+  letters.forEach((letter, idx) => {
+    draggableItemsSection.innerHTML += `  <div class = "draggable"  ondragstart="getDragLetter(this)"  draggable="true" data-letter=${
+      letters[randomIndices[idx]]
+    } >${letters[randomIndices[idx]]}</div> `;
+  });
+
+  var matchingPairsSection = document.createElement("section");
+  matchingPairsSection.className = "matching-pairs";
+
+  for (let index = 0; index < letters.length; index++) {
+    matchingPairsSection.innerHTML += `
+    <div class="matching-pair">
+    <span class="droppable"
+    ondragover="event.preventDefault()"
+    ondrop="insertDropLetter(this)" data-letter=${letters[index]}></span>
+    </div>
+    `;
+  }
+  const image = document.createElement("img");
+  image.src = `./assets/image/lettersPage/images/${word}.png`;
+  image.style = "width:200px ";
+  var fragment = document.createDocumentFragment();
+  fragment.appendChild(scoreSection);
+  fragment.appendChild(draggableItemsSection);
+  fragment.appendChild(matchingPairsSection);
+  fragment.appendChild(image);
+
+  return fragment;
+}
+function insertDropLetter(div) {
+  if (
+    div.getAttribute("data-letter") ==
+    draggingLetter.getAttribute("data-letter")
+  ) {
+    div.classList.add("dropped");
+    div.appendChild(draggingLetter);
+  }
+}
+function getDragLetter(img) {
+  img.style = "margin : 0px ";
+  draggingLetter = img;
+}
 function createMCQContainer() {
   var mcqContainer = document.createElement("div");
   mcqContainer.className = "mcq-container d-none";
@@ -305,4 +372,16 @@ function onPrevClick(btn) {
       break;
   }
   document.getElementById("nxt-btn").setAttribute("data-flag", flag);
+}
+function generateUniqueRandomIndices(endIndex) {
+  const availableIndices = Array.from({ length: endIndex + 1 }, (_, i) => i);
+  const uniqueIndices = [];
+
+  while (availableIndices.length > 0) {
+    const randomIndex = Math.floor(Math.random() * availableIndices.length);
+    const uniqueIndex = availableIndices.splice(randomIndex, 1)[0];
+    uniqueIndices.push(uniqueIndex);
+  }
+
+  return uniqueIndices;
 }
