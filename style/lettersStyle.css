@@ -1,5 +1,7 @@
 * {
-     box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -9,50 +11,54 @@ body {
 }
 
 .data-container ,.drag-container ,.mcq-container  {
-    min-height: 90vh;
+    min-height: 80vh;
      display: flex;
      align-items: center;
      justify-content: space-around;
 
 }
+.drag-container{
+  align-items: start;
+}
 
 .left {
      margin-top: 3rem;
 
-
 }
-
 .left img {
      width: 250px;
-
 }
-
-.right {}
 
 .right img {
      width: 250px;
      /* transform: translateY(-20%); */
-
-
 }
 
-
+.btns {
+  display: flex;
+  justify-content:space-around;
+}
 .d-none{
      display: none;
 }
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.btns button {
+padding: 1rem;
+background-color: #145af09d;
+border: #f0bd14c0 solid 2px;
+border-radius: 1rem;
+cursor: pointer;
+transition: 0.3s;
+font-weight: 600;
 }
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #eee;
-  color: #111;
-}
+.btns button:hover {
+ 
+  background-color: #f0bd14c0;
+  border:  #145af09d solid 2px;
+  border-radius: 1rem;
+  }
+  
+
+
 
 .score {
   font-family: monospace;
@@ -143,6 +149,7 @@ body {
   background-color: #fff;
   border: 3px dashed #111;
   transition: 0.2s;
+ 
 }
 .droppable-hover {
   background-color: #bee3f0;
@@ -150,6 +157,7 @@ body {
 }
 .dropped {
   border-style: solid;
+
   
   
 }

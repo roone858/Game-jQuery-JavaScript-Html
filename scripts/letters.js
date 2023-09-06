@@ -153,12 +153,16 @@ function createLetterElement(letterObj) {
     const mcqContainer = createMCQContainer();
     const nextButton = createNextButton();
     const prevButton = createPrevButton();
+
+    const btns = document.createElement("btns");
+    btns.className = "btns";
+    btns.appendChild(prevButton);
+    btns.appendChild(nextButton);
     gameContainer.style.display = "none";
     lessonContainer.replaceChildren(dataContainer);
     lessonContainer.appendChild(dragContainer);
     lessonContainer.appendChild(mcqContainer);
-    lessonContainer.appendChild(prevButton);
-    lessonContainer.appendChild(nextButton);
+    lessonContainer.appendChild(btns);
   });
   return letterElement;
 }
@@ -185,16 +189,18 @@ function createDataContainer(letterObj) {
   shapeDiv.style.alignItems = "center";
   shapeDiv.style.flexDirection = "column";
 
-  var imgShape = document.createElement("img");
+  var img = document.createElement("img");
 
-  imgShape.src = `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`;
-  imgShape.alt = "";
+  img.src = `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`;
+  img.alt = "";
 
-  var h1Shape = document.createElement("h1");
-  h1Shape.textContent = letterObj.examples[0];
+  var word = document.createElement("h1");
+  word.style="font-size:4rem ;color:black"
+  word.textContent = letterObj.examples[0].toUpperCase()[0]+ letterObj.examples[0].slice(1);
 
-  shapeDiv.appendChild(imgShape);
-  shapeDiv.appendChild(h1Shape);
+
+  shapeDiv.appendChild(img);
+  shapeDiv.appendChild(word);
 
   rightDiv.appendChild(shapeDiv);
 
@@ -250,16 +256,16 @@ function createDragGameStructure(word) {
 
   for (let index = 0; index < letters.length; index++) {
     matchingPairsSection.innerHTML += `
-    <div class="matching-pair">
-    <span class="droppable"
+    <div 
+    class="matching-pair droppable" 
     ondragover="event.preventDefault()"
-    ondrop="insertDropLetter(this)" data-letter=${letters[index]}></span>
-    </div>
+    ondrop="insertDropLetter(this)" data-letter=${letters[index]} 
+    > </div>
     `;
   }
   const image = document.createElement("img");
   image.src = `./assets/image/lettersPage/images/${word}.png`;
-  image.style = "width:200px ";
+  image.style = "height:200px ";
   var fragment = document.createDocumentFragment();
   fragment.appendChild(scoreSection);
   fragment.appendChild(draggableItemsSection);
@@ -274,11 +280,11 @@ function insertDropLetter(div) {
     draggingLetter.getAttribute("data-letter")
   ) {
     div.classList.add("dropped");
+    draggingLetter.style = "margin : 0px ";
     div.appendChild(draggingLetter);
   }
 }
 function getDragLetter(img) {
-  img.style = "margin : 0px ";
   draggingLetter = img;
 }
 function createMCQContainer() {
@@ -332,9 +338,7 @@ function onNextClick(btn) {
       mcqContainer.classList.remove("d-none");
       flag++;
       break;
-
     case 2:
-      //return to home page
       break;
     default:
       break;
@@ -346,8 +350,8 @@ function onPrevClick(btn) {
   const dataContainer = document.querySelector(".data-container");
   const dragContainer = document.querySelector(".drag-container");
   const mcqContainer = document.querySelector(".mcq-container");
-  const nextBtn = document.getElementById("nxt-btn");
-  const prevBtn = document.getElementById("prev-btn");
+  const btns = document.querySelector(".btns");
+
   let flag = parseInt(
     document.getElementById("nxt-btn").getAttribute("data-flag")
   );
@@ -355,9 +359,7 @@ function onPrevClick(btn) {
     case 0:
       gameContainer.style.display = "flex";
       dataContainer.classList.add("d-none");
-      nextBtn.classList.add("d-none");
-      prevBtn.classList.add("d-none");
-      // return to home page
+      btns.classList.add("d-none");
       break;
     case 1:
       dragContainer.classList.add("d-none");
@@ -373,10 +375,10 @@ function onPrevClick(btn) {
   }
   document.getElementById("nxt-btn").setAttribute("data-flag", flag);
 }
+
 function generateUniqueRandomIndices(endIndex) {
   const availableIndices = Array.from({ length: endIndex + 1 }, (_, i) => i);
   const uniqueIndices = [];
-
   while (availableIndices.length > 0) {
     const randomIndex = Math.floor(Math.random() * availableIndices.length);
     const uniqueIndex = availableIndices.splice(randomIndex, 1)[0];
