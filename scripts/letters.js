@@ -195,9 +195,9 @@ function createDataContainer(letterObj) {
   img.alt = "";
 
   var word = document.createElement("h1");
-  word.style="font-size:4rem ;color:black"
-  word.textContent = letterObj.examples[0].toUpperCase()[0]+ letterObj.examples[0].slice(1);
-
+  word.style = "font-size:4rem ;color:black";
+  word.textContent =
+    letterObj.examples[0].toUpperCase()[0] + letterObj.examples[0].slice(1);
 
   shapeDiv.appendChild(img);
   shapeDiv.appendChild(word);
@@ -230,7 +230,7 @@ function createDragGameStructure(word) {
 
   var totalSpan = document.createElement("span");
   totalSpan.className = "total";
-  totalSpan.textContent = "0";
+  totalSpan.textContent = word.length;
 
   var playAgainButton = document.createElement("button");
   playAgainButton.id = "play-again-btn";
@@ -253,12 +253,13 @@ function createDragGameStructure(word) {
 
   var matchingPairsSection = document.createElement("section");
   matchingPairsSection.className = "matching-pairs";
-
+  matchingPairsSection.setAttribute("data-word", word);
   for (let index = 0; index < letters.length; index++) {
     matchingPairsSection.innerHTML += `
     <div 
     class="matching-pair droppable" 
     ondragover="event.preventDefault()"
+  
     ondrop="insertDropLetter(this)" data-letter=${letters[index]} 
     > </div>
     `;
@@ -275,6 +276,7 @@ function createDragGameStructure(word) {
   return fragment;
 }
 function insertDropLetter(div) {
+  var correctSpan = document.querySelector(".correct");
   if (
     div.getAttribute("data-letter") ==
     draggingLetter.getAttribute("data-letter")
@@ -282,6 +284,13 @@ function insertDropLetter(div) {
     div.classList.add("dropped");
     draggingLetter.style = "margin : 0px ";
     div.appendChild(draggingLetter);
+    correctSpan.textContent = Number(correctSpan.textContent) + 1;
+
+    if (
+      correctSpan.textContent ==
+      document.querySelector(".matching-pairs").getAttribute("data-word").length
+    )
+      document.getElementById("nxt-btn").classList.remove("d-none");
   }
 }
 function getDragLetter(img) {
@@ -331,6 +340,7 @@ function onNextClick(btn) {
     case 0:
       dataContainer.classList.add("d-none");
       dragContainer.classList.remove("d-none");
+      btn.classList.add("d-none");
       flag++;
       break;
     case 1:
