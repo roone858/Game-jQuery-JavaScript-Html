@@ -149,7 +149,7 @@ function createLetterElement(letterObj) {
   letterElement.addEventListener("click", () => {
     const dataContainer = createDataContainer(letterObj);
     const dragContainer = createDragContainer(letterObj);
-    const mcqContainer = createMCQContainer();
+    const mcqContainer = createMCQContainer(letterObj);
     const nextButton = createNextButton();
     const prevButton = createPrevButton();
 
@@ -293,18 +293,49 @@ function insertDropLetter(div) {
 function getDragLetter(img) {
   draggingLetter = img;
 }
-function createMCQContainer() {
+
+function createMCQContainer(letterObj) {
   var mcqContainer = document.createElement("div");
   mcqContainer.className = "mcq-container d-none";
 
-  var h4MCQ = document.createElement("h4");
-  h4MCQ.textContent = "mcq container";
+ const mcqContent = createMcq(letterObj)
 
-  mcqContainer.appendChild(h4MCQ);
+  mcqContainer.appendChild(mcqContent);
 
   return mcqContainer;
 }
 
+function createMcq(letterObj) {
+  const imageContainer = document.createElement("div");
+  const image = document.createElement("img");
+  imageContainer.setAttribute("class", "animalImg");
+  image.src = `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`;
+  imageContainer.appendChild(image);
+  const optionsContainer = document.createElement("div");
+  optionsContainer.classList.add("options-container");
+ const randomIndices= generateUniqueRandomIndices(2)
+  const optionsOne = document.createElement("p");
+  optionsOne.setAttribute("id", "animal1");
+  optionsOne.textContent = letterObj.examples[randomIndices[0]]
+  const optionsTow = document.createElement("p");
+  optionsTow.setAttribute("id", "animal2");
+  optionsTow.textContent = letterObj.examples[randomIndices[1]]
+  const optionsThree = document.createElement("p");
+  optionsThree.setAttribute("id", "animal3");
+  optionsThree.textContent = letterObj.examples[randomIndices[2]]
+
+  optionsContainer.appendChild(optionsOne);
+  optionsContainer.appendChild(optionsTow);
+  optionsContainer.appendChild(optionsThree);
+
+  var fragment = document.createDocumentFragment();
+  fragment.appendChild(imageContainer);
+  fragment.appendChild(optionsContainer);
+
+  return fragment;
+
+ 
+}
 function createNextButton() {
   var buttonElement = document.createElement("button");
   buttonElement.onclick = function () {
