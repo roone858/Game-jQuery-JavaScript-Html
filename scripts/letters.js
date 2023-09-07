@@ -298,7 +298,7 @@ function createMCQContainer(letterObj) {
   var mcqContainer = document.createElement("div");
   mcqContainer.className = "mcq-container d-none";
 
- const mcqContent = createMcq(letterObj)
+  const mcqContent = createMcq(letterObj);
 
   mcqContainer.appendChild(mcqContent);
 
@@ -306,36 +306,80 @@ function createMCQContainer(letterObj) {
 }
 
 function createMcq(letterObj) {
-  const imageContainer = document.createElement("div");
-  const image = document.createElement("img");
-  imageContainer.setAttribute("class", "animalImg");
-  image.src = `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`;
+  const correctSound = createAudioElement("./assets/sound/correct.mp3");
+  const wrongSound = createAudioElement("./assets/sound/wrong.mp3");
+
+  const imageContainer = createDivElement("animalImg");
+  const image = createImageElement(`./assets/image/lettersPage/images/${letterObj.examples[0]}.png`);
   imageContainer.appendChild(image);
-  const optionsContainer = document.createElement("div");
-  optionsContainer.classList.add("options-container");
- const randomIndices= generateUniqueRandomIndices(2)
-  const optionsOne = document.createElement("p");
-  optionsOne.setAttribute("id", "animal1");
-  optionsOne.textContent = letterObj.examples[randomIndices[0]]
-  const optionsTow = document.createElement("p");
-  optionsTow.setAttribute("id", "animal2");
-  optionsTow.textContent = letterObj.examples[randomIndices[1]]
-  const optionsThree = document.createElement("p");
-  optionsThree.setAttribute("id", "animal3");
-  optionsThree.textContent = letterObj.examples[randomIndices[2]]
 
-  optionsContainer.appendChild(optionsOne);
-  optionsContainer.appendChild(optionsTow);
-  optionsContainer.appendChild(optionsThree);
+  const optionsContainer = createDivElement("options-container");
+  const randomIndices = generateUniqueRandomIndices(2);
 
-  var fragment = document.createDocumentFragment();
+  const options = [];
+  for (let i = 0; i < 3; i++) {
+    const option = createOptionElement(letterObj.examples[randomIndices[i]], correctSound, wrongSound, letterObj.examples[0]);
+    options.push(option);
+  }
+
+  const randomOptionsIndices = generateUniqueRandomIndices(2);
+  optionsContainer.appendChild(options[randomOptionsIndices[0]]);
+  optionsContainer.appendChild(options[randomOptionsIndices[1]]);
+  optionsContainer.appendChild(options[randomOptionsIndices[2]]);
+
+  const fragment = document.createDocumentFragment();
   fragment.appendChild(imageContainer);
   fragment.appendChild(optionsContainer);
+  fragment.appendChild(correctSound);
+  fragment.appendChild(wrongSound);
 
   return fragment;
-
- 
 }
+
+function createAudioElement(src) {
+  const audioElement = document.createElement("audio");
+  audioElement.src = src;
+  return audioElement;
+}
+
+function createDivElement(className) {
+  const divElement = document.createElement("div");
+  divElement.classList.add(className);
+  return divElement;
+}
+
+function createImageElement(src) {
+  const imageElement = document.createElement("img");
+  imageElement.src = src;
+  return imageElement;
+}
+
+function createOptionElement(text, correctSound, wrongSound, correctWord) {
+  const option = document.createElement("p");
+  option.textContent = text;
+  option.addEventListener("click", () => {
+    if (option.textContent != correctWord) {
+      option.style.backgroundColor = "red";
+      wrongSound.play();
+    } else {
+      option.style.backgroundColor = "green";
+      correctSound.play();
+    }
+  });
+  return option;
+}
+
+function generateUniqueRandomIndices(count) {
+  const randomIndices = [];
+  while (randomIndices.length < count) {
+    const randomIndex = Math.floor(Math.random() * 26); // Adjust this number based on your needs
+    if (!randomIndices.includes(randomIndex)) {
+      randomIndices.push(randomIndex);
+    }
+  }
+  return randomIndices;
+}
+
 function createNextButton() {
   var buttonElement = document.createElement("button");
   buttonElement.onclick = function () {
