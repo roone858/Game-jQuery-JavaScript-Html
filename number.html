@@ -1,12 +1,51 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Js Project</title>
-    <link rel="stylesheet" href="style/numberStyle.css" />
-  </head>
-  <body>
-    <h1>Welcome Kerooo Your job is to be here</h1>
 
-    <script src="scripts/number.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Alphabetical Game</title>
+  <link rel="stylesheet" href="./style/numberStyle.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <<audio id="numbersSoundTrack" value="off" loop>
+    <source src="./assets/sound/numbersSoundTrack.mp3" type="audio/mpeg" />
+    <source src="./assets/sound/numbersSoundTrack.WAV" type="audio/WAV" />
+    Your browser doesn't support the audio extension.
+    </audio>
+    <img src="./assets/image/audio-2.png" id="soundIcon" class="icons" onclick="playMusic()">
+    <i class="fa-solid fa-house icons" id="homeIcon" onclick="goToHome()"></i>
+    <div id="numsImgs">
+      <img class="numbers" src="./assets/image/numbersPage/1.png" id="num1" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//2.png" id="num2" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//3.png" id="num3" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//4.png" id="num4" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//5.png" id="num5" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//6.png" id="num6" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//7.png" id="num7" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//8.png" id="num8" onclick="lesson(this)" />
+      <img class="numbers" src="./assets/image/numbersPage//9.png" id="num9" onclick="lesson(this)" />
+    </div>
+    <audio id="selectedSound">
+      <source src="" type="audio/mpeg" />
+      Your browser doesn't support the audio extension.
+    </audio>
+    <div class="container">
+      <div class="data-container ">
+        <img id="selectedImg" src=""></img>
+        <div id="animalsImgs">
+        
+        </div>
+      </div>
+      <div class="btns"></div>
+    </div>
+
+    <script src="./scripts/number.js"></script>
+</body>
+
 </html>

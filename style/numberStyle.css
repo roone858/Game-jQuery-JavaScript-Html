@@ -1,0 +1,171 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body {
+     background-image: url("../assets/image/lettersPage/backgrounds/1.jpg");
+     /* background-position: center; */
+
+}
+
+.icons {
+     position: absolute;
+     left: 0.7%;
+     cursor: pointer;
+
+}
+
+.icons:hover {
+     opacity: 0.7;
+}
+
+#soundIcon {
+     width: 4%;
+     height: 8%;
+     top: 2%;
+}
+
+#homeIcon {
+     font-size: 280%;
+     top: 12%;
+}
+
+#numsImgs {
+     margin: 4rem;
+     margin-top: 9rem;
+     position: relative;
+
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+}
+
+.numbers {
+     width: 100px;
+margin: 1rem;
+
+     animation-name: numbers;
+}
+
+#numbers img:hover {
+     width: 7%;
+     height: 22%;
+     z-index: 1;
+}
+
+@keyframes numbers {
+     from {
+          top: -10%;
+     }
+
+     to {
+          top: 35%
+     }
+}
+
+#num1 {
+     left: 15%;
+     animation-duration: 1s;
+}
+
+#num2 {
+     left: 23.125%;
+     animation-duration: 2s;
+}
+
+#num3 {
+     left: 31.25%;
+     animation-duration: 2.5s;
+}
+
+#num4 {
+     left: 39.375%;
+     animation-duration: 3.5s;
+}
+
+#num5 {
+     left: 47.5%;
+     animation-duration: 1.25s;
+}
+
+#num6 {
+     left: 55.625%;
+     animation-duration: 3.1s;
+}
+
+#num7 {
+     left: 63.75%;
+     animation-duration: 4s;
+}
+
+#num8 {
+     left: 71.875%;
+     animation-duration: 2.8s;
+}
+
+#num9 {
+     left: 80%;
+     animation-duration: 1.8s;
+}
+
+
+@keyframes selectedNum {
+     from {
+          top: -10%;
+     }
+     
+     to {
+          top: 24%
+     }
+}
+.container{
+     display: flex;
+     flex-direction: column;
+
+}
+.data-container{
+     padding:2rem;
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     height: 80vh;
+}
+.btns{
+     width: 100%;
+     display: flex;
+     justify-content: space-around;
+}
+.btns button {
+     padding: 1rem;
+     background-color: #145af09d;
+     border: #f0bd14c0 solid 2px;
+     border-radius: 1rem;
+     cursor: pointer;
+     transition: 0.3s;
+     font-weight: 600;
+     }
+     .btns button:hover {
+      
+       background-color: #f0bd14c0;
+       border:  #145af09d solid 2px;
+       border-radius: 1rem;
+       }
+       
+#selectedImg {
+     width: 150px;
+
+    
+     animation-name: selectedNum;
+     animation-duration: 2s;
+}
+
+#animalsImgs{
+     width:60%;
+}
+.selectedAnimals {
+     height: 150px;
+
+}
