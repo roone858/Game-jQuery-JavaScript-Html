@@ -153,6 +153,10 @@ function createLetterElement(letterObj) {
     const nextButton = createNextButton();
     const prevButton = createPrevButton();
 
+    const sound = createAudioElement(
+      `./assets/sound/letters/${letterObj.letter.toLowerCase()}.mp3`
+    );
+    sound.play();
     const btns = document.createElement("btns");
     btns.className = "btns";
     btns.appendChild(prevButton);
@@ -172,12 +176,19 @@ function createDataContainer(letterObj) {
 
   var leftDiv = document.createElement("div");
   leftDiv.className = "left";
-
+  const sound = createAudioElement(
+    `./assets/sound/letters/${letterObj.letter.toLowerCase()}.mp3`
+  );
   var imgLeft = document.createElement("img");
   imgLeft.src = `./assets/image/lettersPage/letters/${letterObj.letter}.png`;
-  imgLeft.alt = "";
-
+  imgLeft.alt = letterObj.letter;
+  imgLeft.addEventListener("click", () => {
+    sound.play();
+  });
+  const tip = document.createElement("p");
+  tip.textContent = "Click to Listen";
   leftDiv.appendChild(imgLeft);
+  leftDiv.appendChild(tip);
 
   var rightDiv = document.createElement("div");
   rightDiv.className = "right";
@@ -286,7 +297,8 @@ function insertDropLetter(div) {
       correctSpan.textContent ==
       document.querySelector(".matching-pairs").getAttribute("data-word").length
     ) {
-      document.getElementById("nxt-btn").classList.remove("d-none");
+      createAudioElement("./assets/sound/correct.mp3").play();
+      document.querySelectorAll(".dropped div").forEach(ele => ele.style="background-color : green; margin : 0px;")
     }
   }
 }
@@ -310,7 +322,9 @@ function createMcq(letterObj) {
   const wrongSound = createAudioElement("./assets/sound/wrong.mp3");
 
   const imageContainer = createDivElement("animalImg");
-  const image = createImageElement(`./assets/image/lettersPage/images/${letterObj.examples[0]}.png`);
+  const image = createImageElement(
+    `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`
+  );
   imageContainer.appendChild(image);
 
   const optionsContainer = createDivElement("options-container");
@@ -318,7 +332,12 @@ function createMcq(letterObj) {
 
   const options = [];
   for (let i = 0; i < 3; i++) {
-    const option = createOptionElement(letterObj.examples[randomIndices[i]], correctSound, wrongSound, letterObj.examples[0]);
+    const option = createOptionElement(
+      letterObj.examples[randomIndices[i]],
+      correctSound,
+      wrongSound,
+      letterObj.examples[0]
+    );
     options.push(option);
   }
 
@@ -330,8 +349,6 @@ function createMcq(letterObj) {
   const fragment = document.createDocumentFragment();
   fragment.appendChild(imageContainer);
   fragment.appendChild(optionsContainer);
-  fragment.appendChild(correctSound);
-  fragment.appendChild(wrongSound);
 
   return fragment;
 }
