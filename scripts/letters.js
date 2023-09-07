@@ -301,6 +301,9 @@ function insertDropLetter(div) {
       document.querySelectorAll(".dropped div").forEach(ele => ele.style="background-color : green; margin : 0px;")
     }
   }
+  else {
+    createAudioElement("./assets/sound/wrong.mp3").play();
+  }
 }
 function getDragLetter(img) {
   draggingLetter = img;
