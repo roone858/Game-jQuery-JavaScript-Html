@@ -133,154 +133,320 @@ const alphabetData = [
   },
 ];
 
-const gameContainer = document.getElementById("game-container");
+$(document).ready(function () {
+  const gameContainer = $("#game-container");
+  const lessonContainer = $("#lesson-container");
 
-alphabetData.forEach((letterObj) => {
-  const letterElement = createLetterElement(letterObj);
-  gameContainer.appendChild(letterElement);
-});
+  alphabetData.forEach((letterObj) => {
+    const letterElement = createLetterElement(letterObj);
+    gameContainer.append(letterElement);
+  });
 
-const lessonContainer = document.getElementById("lesson-container");
+  function createLetterElement(letterObj) {
+    const letterElement = $("<div>").addClass("letter").text(letterObj.letter);
+    letterElement.on("click", () => {
+      const dataContainer = createDataContainer(letterObj);
+      const dragContainer = createDragContainer(letterObj);
+      const mcqContainer = createMCQContainer(letterObj);
+      const nextButton = createNextButton();
+      const prevButton = createPrevButton();
 
-function createLetterElement(letterObj) {
-  const letterElement = document.createElement("div");
-  letterElement.className = "letter";
-  letterElement.textContent = letterObj.letter;
-  letterElement.addEventListener("click", () => {
-    const dataContainer = createDataContainer(letterObj);
-    const dragContainer = createDragContainer(letterObj);
-    const mcqContainer = createMCQContainer(letterObj);
-    const nextButton = createNextButton();
-    const prevButton = createPrevButton();
+      const sound = createAudioElement(
+        `./assets/sound/letters/${letterObj.letter.toLowerCase()}.mp3`
+      );
+      sound.get(0).play();
 
+      const btns = $("<div>").addClass("btns");
+      btns.append(prevButton);
+      btns.append(nextButton);
+      gameContainer.css("display", "none");
+      lessonContainer.empty();
+      lessonContainer.append(dataContainer);
+      lessonContainer.append(dragContainer);
+      lessonContainer.append(mcqContainer);
+      lessonContainer.append(btns);
+    });
+    return letterElement;
+  }
+
+  function createDataContainer(letterObj) {
+    var dataContainer = $("<div>").addClass("data-container");
+
+    var leftDiv = $("<div>").addClass("left");
     const sound = createAudioElement(
       `./assets/sound/letters/${letterObj.letter.toLowerCase()}.mp3`
     );
-    sound.play();
-    const btns = document.createElement("btns");
-    btns.className = "btns";
-    btns.appendChild(prevButton);
-    btns.appendChild(nextButton);
-    gameContainer.style.display = "none";
-    lessonContainer.replaceChildren(dataContainer);
-    lessonContainer.appendChild(dragContainer);
-    lessonContainer.appendChild(mcqContainer);
-    lessonContainer.appendChild(btns);
-  });
-  return letterElement;
-}
+    var imgLeft = $("<img>")
+      .attr("src", `./assets/image/lettersPage/letters/${letterObj.letter}.png`)
+      .attr("alt", letterObj.letter)
+      .on("click", function () {
+        sound.get(0).play();
+      });
+    var tip = $("<p>").text("Click to Listen");
+    leftDiv.append(imgLeft, tip);
 
-function createDataContainer(letterObj) {
-  var dataContainer = document.createElement("div");
-  dataContainer.className = "data-container";
+    var rightDiv = $("<div>").addClass("right");
 
-  var leftDiv = document.createElement("div");
-  leftDiv.className = "left";
-  const sound = createAudioElement(
-    `./assets/sound/letters/${letterObj.letter.toLowerCase()}.mp3`
-  );
-  var imgLeft = document.createElement("img");
-  imgLeft.src = `./assets/image/lettersPage/letters/${letterObj.letter}.png`;
-  imgLeft.alt = letterObj.letter;
-  imgLeft.addEventListener("click", () => {
-    sound.play();
-  });
-  const tip = document.createElement("p");
-  tip.textContent = "Click to Listen";
-  leftDiv.appendChild(imgLeft);
-  leftDiv.appendChild(tip);
+    var shapeDiv = $("<div>").addClass("shape").css({
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column",
+    });
 
-  var rightDiv = document.createElement("div");
-  rightDiv.className = "right";
+    var img = $("<img>")
+      .attr(
+        "src",
+        `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`
+      )
+      .attr("alt", "");
 
-  var shapeDiv = document.createElement("div");
-  shapeDiv.className = "shape";
-  shapeDiv.style.display = "flex";
-  shapeDiv.style.alignItems = "center";
-  shapeDiv.style.flexDirection = "column";
+    var word = $("<h1>")
+      .css({
+        fontSize: "4rem",
+        color: "black",
+      })
+      .text(
+        letterObj.examples[0].toUpperCase()[0] + letterObj.examples[0].slice(1)
+      );
 
-  var img = document.createElement("img");
+    shapeDiv.append(img, word);
+    rightDiv.append(shapeDiv);
+    dataContainer.append(leftDiv, rightDiv);
 
-  img.src = `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`;
-  img.alt = "";
-
-  var word = document.createElement("h1");
-  word.style = "font-size:4rem ;color:black";
-  word.textContent =
-    letterObj.examples[0].toUpperCase()[0] + letterObj.examples[0].slice(1);
-  shapeDiv.appendChild(img);
-  shapeDiv.appendChild(word);
-  rightDiv.appendChild(shapeDiv);
-  dataContainer.appendChild(leftDiv);
-  dataContainer.appendChild(rightDiv);
-
-  return dataContainer;
-}
-
-function createDragContainer(letterObj) {
-  var dragContainer = document.createElement("div");
-  dragContainer.className = "drag-container d-none";
-  var div = document.createElement("div");
-  div.appendChild(createDragGameStructure(letterObj.examples[0]));
-
-  dragContainer.appendChild(div);
-  return dragContainer;
-}
-
-function createDragGameStructure(word) {
-  var scoreSection = document.createElement("section");
-  scoreSection.className = "score";
-
-  var correctSpan = document.createElement("span");
-  correctSpan.className = "correct";
-  correctSpan.textContent = "0";
-
-  var totalSpan = document.createElement("span");
-  totalSpan.className = "total";
-  totalSpan.textContent = word.length;
-
-  var playAgainButton = document.createElement("button");
-  playAgainButton.id = "play-again-btn";
-  playAgainButton.textContent = "Play Again";
-
-  scoreSection.appendChild(correctSpan);
-  scoreSection.appendChild(document.createTextNode("/"));
-  scoreSection.appendChild(totalSpan);
-  scoreSection.appendChild(playAgainButton);
-
-  var draggableItemsSection = document.createElement("section");
-  draggableItemsSection.className = "draggable-items";
-  const letters = word.split("");
-  const randomIndices = generateUniqueRandomIndices(letters.length - 1);
-  letters.forEach((letter, idx) => {
-    draggableItemsSection.innerHTML += `  <div class = "draggable"  ondragstart="getDragLetter(this)"  draggable="true" data-letter=${
-      letters[randomIndices[idx]]
-    } >${letters[randomIndices[idx]]}</div> `;
-  });
-
-  var matchingPairsSection = document.createElement("section");
-  matchingPairsSection.className = "matching-pairs";
-  matchingPairsSection.setAttribute("data-word", word);
-  for (let index = 0; index < letters.length; index++) {
-    matchingPairsSection.innerHTML += `
-    <div 
-    class="matching-pair droppable" 
-    ondragover="event.preventDefault()"
-    ondrop="insertDropLetter(this)" data-letter=${letters[index]} 
-    > </div>
-    `;
+    return dataContainer;
   }
-  const image = document.createElement("img");
-  image.src = `./assets/image/lettersPage/images/${word}.png`;
-  image.style = "height:200px ";
-  var fragment = document.createDocumentFragment();
-  fragment.appendChild(scoreSection);
-  fragment.appendChild(draggableItemsSection);
-  fragment.appendChild(matchingPairsSection);
-  fragment.appendChild(image);
 
-  return fragment;
-}
+  function createDragContainer(letterObj) {
+    var dragContainer = $("<div>").addClass("drag-container d-none");
+    var div = $("<div>").append(createDragGameStructure(letterObj.examples[0]));
+
+    dragContainer.append(div);
+    return dragContainer[0];
+  }
+  function createDragGameStructure(word) {
+    var scoreSection = $("<section>").addClass("score");
+    var correctSpan = $("<span>").addClass("correct").text("0");
+    var totalSpan = $("<span>").addClass("total").text(word.length);
+    var playAgainButton = $("<button>")
+      .attr("id", "play-again-btn")
+      .text("Play Again");
+
+    scoreSection.append(correctSpan, "/", totalSpan, playAgainButton);
+
+    var draggableItemsSection = $("<section>").addClass("draggable-items");
+    const letters = word.split("");
+    const randomIndices = generateUniqueRandomIndices(letters.length - 1);
+
+    letters.forEach((letter, idx) => {
+      const draggableDiv = $("<div>")
+        .addClass("draggable")
+        .attr("ondragstart", "getDragLetter(this)")
+        .attr("draggable", "true")
+        .attr("data-letter", letters[randomIndices[idx]])
+        .text(letters[randomIndices[idx]]);
+      draggableItemsSection.append(draggableDiv);
+    });
+
+    var matchingPairsSection = $("<section>")
+      .addClass("matching-pairs")
+      .attr("data-word", word);
+
+    for (let index = 0; index < letters.length; index++) {
+      const matchingPairDiv = $("<div>")
+        .addClass("matching-pair droppable")
+        .attr("ondragover", "event.preventDefault()")
+        .attr("ondrop", "insertDropLetter(this)")
+        .attr("data-letter", letters[index]);
+      matchingPairsSection.append(matchingPairDiv);
+    }
+
+    const image = $("<img>")
+      .attr("src", `./assets/image/lettersPage/images/${word}.png`)
+      .css("height", "200px");
+
+    var fragment = document.createDocumentFragment();
+    fragment.appendChild(scoreSection[0]);
+    fragment.appendChild(draggableItemsSection[0]);
+    fragment.appendChild(matchingPairsSection[0]);
+    fragment.appendChild(image[0]);
+
+    return fragment;
+  }
+
+  function createMCQContainer(letterObj) {
+    var mcqContainer = createDivElement("mcq-container d-none");
+
+  const mcqContent = createMcq(letterObj);
+
+    mcqContainer.appendChild(mcqContent);
+
+    return mcqContainer;
+  }
+
+  function createMcq(letterObj) {
+    const correctSound = createAudioElement("./assets/sound/correct.mp3");
+    const wrongSound = createAudioElement("./assets/sound/wrong.mp3");
+    const imageContainer = createDivElement("animalImg");
+    const image = createImageElement(
+      `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`
+    );
+    imageContainer.appendChild(image);
+    const optionsContainer = createDivElement("options-container");
+    const randomIndices = generateUniqueRandomIndices(2);
+
+    const options = [];
+    for (let i = 0; i < 3; i++) {
+      const option = createOptionElement(
+        letterObj.examples[randomIndices[i]],
+        correctSound,
+        wrongSound,
+        letterObj.examples[0]
+      );
+      options.push(option);
+    }
+    const randomOptionsIndices = generateUniqueRandomIndices(2);
+    optionsContainer.appendChild(options[randomOptionsIndices[0]]);
+    optionsContainer.appendChild(options[randomOptionsIndices[1]]);
+    optionsContainer.appendChild(options[randomOptionsIndices[2]]);
+
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(imageContainer);
+    fragment.appendChild(optionsContainer);
+
+    return fragment;
+  }
+  function createAudioElement(src) {
+    const audioElement = $("<audio>").attr("src", src);
+    return audioElement;
+  }
+
+  function createDivElement(className) {
+    const divElement = $("<div>").addClass(className);
+    return divElement[0];
+  }
+
+  function createImageElement(src) {
+    const imageElement = $("<img>").attr("src", src);
+    return imageElement[0];
+  }
+
+  function createOptionElement(text, correctSound, wrongSound, correctWord) {
+    const option = $("<p>").text(text);
+
+    option.on("click", function () {
+      if ($(this).text() != correctWord) {
+        $(this).css("background-color", "red");
+        wrongSound[0].play();
+      } else {
+        $(this).css("background-color", "green");
+        correctSound[0].play();
+      }
+    });
+
+    return option[0];
+  }
+
+  // function generateUniqueRandomIndices(count) {
+  //   const randomIndices = [];
+  //   while (randomIndices.length < count) {
+  //     const randomIndex = Math.floor(Math.random() * 26); // Adjust this number based on your needs
+  //     if (!randomIndices.includes(randomIndex)) {
+  //       randomIndices.push(randomIndex);
+  //     }
+  //   }
+  //   return randomIndices;
+  // }
+
+function createNextButton() {
+  var buttonElement = $("<button>")
+  .attr("id", "nxt-btn")
+  .attr("data-flag", "0")
+  .text("Next")
+  .on("click", function () {
+    onNextClick(this);
+  });
+
+return buttonElement[0];
+  // var buttonElement = document.createElement("button");
+  // buttonElement.onclick = function () {
+  //   onNextClick(this);
+  // };
+  // buttonElement.dataset.flag = "0";
+  // buttonElement.id = "nxt-btn";
+  // buttonElement.textContent = "Next";
+
+  //   return buttonElement[0];
+  }
+
+  function createPrevButton() {
+    var buttonElement = $("<button>")
+      .attr("id", "prev-btn")
+      .attr("data-flag", "0")
+      .text("Previous")
+      .on("click", function () {
+        onPrevClick(this);
+      });
+
+    return buttonElement[0];
+  }
+
+  function onNextClick(btn) {
+    const dataContainer = $(".data-container");
+    const dragContainer = $(".drag-container");
+    const mcqContainer = $(".mcq-container");
+
+    let flag = parseInt($(btn).attr("data-flag"));
+
+    switch (flag) {
+      case 0:
+        dataContainer.addClass("d-none");
+        dragContainer.removeClass("d-none");
+        flag++;
+        break;
+      case 1:
+        dragContainer.addClass("d-none");
+        mcqContainer.removeClass("d-none");
+        flag++;
+        break;
+      case 2:
+        // Handle any additional cases if needed
+        break;
+      default:
+        // Handle default case if needed
+        break;
+    }
+
+    $(btn).attr("data-flag", flag);
+  }
+
+  function onPrevClick(btn) {
+    const dataContainer = $(".data-container");
+    const dragContainer = $(".drag-container");
+    const mcqContainer = $(".mcq-container");
+    const btns = $(".btns");
+    let flag = parseInt($("#nxt-btn").attr("data-flag"));
+    switch (flag) {
+      case 0:
+        $("#game-container").css("display", "flex");
+        dataContainer.addClass("d-none");
+        btns.addClass("d-none");
+        break;
+      case 1:
+        dragContainer.addClass("d-none");
+        dataContainer.removeClass("d-none");
+        flag--;
+        break;
+      case 2:
+        mcqContainer.addClass("d-none");
+        dragContainer.removeClass("d-none");
+        flag--;
+        break;
+      default:
+        break;
+    }
+    $("#nxt-btn").attr("data-flag", flag);
+  }
+});
 function insertDropLetter(div) {
   var correctSpan = document.querySelector(".correct");
   if (
@@ -297,185 +463,25 @@ function insertDropLetter(div) {
       correctSpan.textContent ==
       document.querySelector(".matching-pairs").getAttribute("data-word").length
     ) {
-      createAudioElement("./assets/sound/correct.mp3").play();
-      document.querySelectorAll(".dropped div").forEach(ele => ele.style="background-color : green; margin : 0px;")
+      createAudioElement("./assets/sound/correct.mp3").get(0).play();
+      document
+        .querySelectorAll(".dropped div")
+        .forEach(
+          (ele) => (ele.style = "background-color : green; margin : 0px;")
+        );
     }
-  }
-  else {
-    createAudioElement("./assets/sound/wrong.mp3").play();
+  } else {
+    createAudioElement("./assets/sound/wrong.mp3").get(0).play();
   }
 }
+
 function getDragLetter(img) {
   draggingLetter = img;
 }
 
-function createMCQContainer(letterObj) {
-  var mcqContainer = document.createElement("div");
-  mcqContainer.className = "mcq-container d-none";
-
-  const mcqContent = createMcq(letterObj);
-
-  mcqContainer.appendChild(mcqContent);
-
-  return mcqContainer;
-}
-
-function createMcq(letterObj) {
-  const correctSound = createAudioElement("./assets/sound/correct.mp3");
-  const wrongSound = createAudioElement("./assets/sound/wrong.mp3");
-
-  const imageContainer = createDivElement("animalImg");
-  const image = createImageElement(
-    `./assets/image/lettersPage/images/${letterObj.examples[0]}.png`
-  );
-  imageContainer.appendChild(image);
-
-  const optionsContainer = createDivElement("options-container");
-  const randomIndices = generateUniqueRandomIndices(2);
-
-  const options = [];
-  for (let i = 0; i < 3; i++) {
-    const option = createOptionElement(
-      letterObj.examples[randomIndices[i]],
-      correctSound,
-      wrongSound,
-      letterObj.examples[0]
-    );
-    options.push(option);
-  }
-
-  const randomOptionsIndices = generateUniqueRandomIndices(2);
-  optionsContainer.appendChild(options[randomOptionsIndices[0]]);
-  optionsContainer.appendChild(options[randomOptionsIndices[1]]);
-  optionsContainer.appendChild(options[randomOptionsIndices[2]]);
-
-  const fragment = document.createDocumentFragment();
-  fragment.appendChild(imageContainer);
-  fragment.appendChild(optionsContainer);
-
-  return fragment;
-}
-
 function createAudioElement(src) {
-  const audioElement = document.createElement("audio");
-  audioElement.src = src;
+  const audioElement = $("<audio>").attr("src", src);
   return audioElement;
-}
-
-function createDivElement(className) {
-  const divElement = document.createElement("div");
-  divElement.classList.add(className);
-  return divElement;
-}
-
-function createImageElement(src) {
-  const imageElement = document.createElement("img");
-  imageElement.src = src;
-  return imageElement;
-}
-
-function createOptionElement(text, correctSound, wrongSound, correctWord) {
-  const option = document.createElement("p");
-  option.textContent = text;
-  option.addEventListener("click", () => {
-    if (option.textContent != correctWord) {
-      option.style.backgroundColor = "red";
-      wrongSound.play();
-    } else {
-      option.style.backgroundColor = "green";
-      correctSound.play();
-    }
-  });
-  return option;
-}
-
-function generateUniqueRandomIndices(count) {
-  const randomIndices = [];
-  while (randomIndices.length < count) {
-    const randomIndex = Math.floor(Math.random() * 26); // Adjust this number based on your needs
-    if (!randomIndices.includes(randomIndex)) {
-      randomIndices.push(randomIndex);
-    }
-  }
-  return randomIndices;
-}
-
-function createNextButton() {
-  var buttonElement = document.createElement("button");
-  buttonElement.onclick = function () {
-    onNextClick(this);
-  };
-  buttonElement.dataset.flag = "0";
-  buttonElement.id = "nxt-btn";
-  buttonElement.textContent = "Next";
-
-  return buttonElement;
-}
-function createPrevButton() {
-  var buttonElement = document.createElement("button");
-  buttonElement.onclick = function () {
-    onPrevClick(this);
-  };
-  buttonElement.dataset.flag = "0";
-  buttonElement.id = "prev-btn";
-  buttonElement.textContent = "Previous";
-
-  return buttonElement;
-}
-
-function onNextClick(btn) {
-  const dataContainer = document.querySelector(".data-container");
-  const dragContainer = document.querySelector(".drag-container");
-  const mcqContainer = document.querySelector(".mcq-container");
-  let flag = parseInt(btn.getAttribute("data-flag"));
-  switch (flag) {
-    case 0:
-      dataContainer.classList.add("d-none");
-      dragContainer.classList.remove("d-none");
-
-      flag++;
-      break;
-    case 1:
-      dragContainer.classList.add("d-none");
-      mcqContainer.classList.remove("d-none");
-      flag++;
-      break;
-    case 2:
-      break;
-    default:
-      break;
-  }
-
-  btn.setAttribute("data-flag", flag);
-}
-function onPrevClick(btn) {
-  const dataContainer = document.querySelector(".data-container");
-  const dragContainer = document.querySelector(".drag-container");
-  const mcqContainer = document.querySelector(".mcq-container");
-  const btns = document.querySelector(".btns");
-
-  let flag = parseInt(
-    document.getElementById("nxt-btn").getAttribute("data-flag")
-  );
-  switch (flag) {
-    case 0:
-      gameContainer.style.display = "flex";
-      dataContainer.classList.add("d-none");
-      btns.classList.add("d-none");
-      break;
-    case 1:
-      dragContainer.classList.add("d-none");
-      dataContainer.classList.remove("d-none");
-      flag--;
-      break;
-    case 2:
-      mcqContainer.classList.add("d-none");
-      dragContainer.classList.remove("d-none");
-      flag--;
-    default:
-      break;
-  }
-  document.getElementById("nxt-btn").setAttribute("data-flag", flag);
 }
 
 function generateUniqueRandomIndices(endIndex) {

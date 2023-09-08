@@ -36,59 +36,64 @@ var animalsData = {
     img: "./assets/image/numbersPage/hippo.png",
   },
 };
-function playMusic() {
-  var numbersSoundTrack = document.getElementById("numbersSoundTrack");
-  var soundIcon = document.getElementById("soundIcon");
-  if (numbersSoundTrack.value == "off") {
-    numbersSoundTrack.pause();
-    numbersSoundTrack.value = "on";
-    soundIcon.src = "./assets/image/audio-2.png";
-  } else {
-    numbersSoundTrack.play();
-    numbersSoundTrack.value = "off";
-    soundIcon.src = "./assets/image/audio-speaker-1.png";
+$(document).ready(function () {
+  function playMusic() {
+    var numbersSoundTrack = document.getElementById("numbersSoundTrack");
+    var soundIcon = document.getElementById("soundIcon");
+    if (numbersSoundTrack.value == "off") {
+      numbersSoundTrack.pause();
+      numbersSoundTrack.value = "on";
+      soundIcon.src = "./assets/image/audio-2.png";
+    } else {
+      numbersSoundTrack.play();
+      numbersSoundTrack.value = "off";
+      soundIcon.src = "./assets/image/audio-speaker-1.png";
+    }
   }
-}
-function goToHome() {
-  open("index.html", "_self");
-}
-
-function lesson(number) {
-     const container = document.querySelector(".container");
-     document.getElementById("numsImgs").style.display = "none";
-  container.style.display = "flex";
+  function goToHome() {
+    open("index.html", "_self");
+  }
 
   
-  var numId = number.id;
-  var selectedImg = document.getElementById("selectedImg");
 
-  selectedImg.setAttribute("src", number.src);
+ 
+});
+function lesson(number) {
+  const container = $(".container");
+  $("#game-container").css("display", "none");
+  container.css("display", "flex");
+
+  var numId = number.id;
+  var selectedImg = $("#selectedImg");
+
+  selectedImg.attr("src", number.src);
 
   var imgNum = numId.slice(3);
-  var selectedSound = document.getElementById("selectedSound");
-  selectedSound.src = animalsData[imgNum].sound;
-  selectedSound.play();
+  var selectedSound = $("#selectedSound");
+  selectedSound.attr("src", animalsData[imgNum].sound);
+  selectedSound[0].play();
 
-
-  animalsImgs.innerHTML = "";
+  $("#animalsImgs").html("");
   var i = 1;
   setInterval(() => {
-       if (i <= imgNum) {
-            var selectedAnimal = document.createElement("img");
-            selectedAnimal.src = animalsData[imgNum].img;
-            selectedAnimal.setAttribute("class", "selectedAnimals");
-            selectedAnimal.setAttribute("id", "selectedAnimal1");
-            animalsImgs.append(selectedAnimal);
-            i++;
-          }
-     }, 1000);
-     const nextButton = createNextButton();
-     const prevButton = createPrevButton();
-     const div = document.querySelector(".btns");
-     
-     div.replaceChildren(prevButton);
-     div.appendChild(nextButton);
+    if (i <= imgNum) {
+      var selectedAnimal = $("<img>")
+        .attr("src", animalsData[imgNum].img)
+        .addClass("selectedAnimals")
+        .attr("id", "selectedAnimal1");
+      $("#animalsImgs").append(selectedAnimal);
+      i++;
+    }
+  }, 1000);
+
+  const nextButton = createNextButton();
+  const prevButton = createPrevButton();
+  const div = $(".btns");
+
+  div.empty();
+  div.append(prevButton, nextButton);
 }
+
 function createNextButton() {
   var buttonElement = document.createElement("button");
   buttonElement.onclick = function () {
@@ -112,54 +117,58 @@ function createPrevButton() {
   return buttonElement;
 }
 
+
+
+
+function onPrevClick(btn) {
+  const mainContainer = document.querySelector(".container");
+  const mcqContainer = document.querySelector(".mcq-container");
+  const gameContainer = document.getElementById("game-container");
+  gameContainer.style.display = "flex";
+  mainContainer.style = "display : none ;";
+  // let flag = parseInt(
+  //   document.getElementById("nxt-btn").getAttribute("data-flag")
+  // );
+  // switch (flag) {
+  //   case 0:
+  //     gameContainer.style.display = "flex";
+  //     mainContainer.style = "display : none ;";
+
+  //     break;
+  //   case 1:
+  //     dragContainer.classList.add("d-none");
+  //     mainContainer.classList.remove("d-none");
+  //     flag--;
+  //     break;
+  //   case 2:
+  //     mcqContainer.classList.add("d-none");
+  //     dragContainer.classList.remove("d-none");
+  //     flag--;
+  //   default:
+  //     break;
+  // }
+  // document.getElementById("nxt-btn").setAttribute("data-flag", flag);
+}
+
 function onNextClick(btn) {
   const dataContainer = document.querySelector(".data-container");
   const dragContainer = document.querySelector(".drag-container");
   const mcqContainer = document.querySelector(".mcq-container");
-  let flag = parseInt(btn.getAttribute("data-flag"));
-  switch (flag) {
-    case 0:
-      flag++;
-      break;
-    case 1:
-      dragContainer.classList.add("d-none");
-      mcqContainer.classList.remove("d-none");
-      flag++;
-      break;
-    case 2:
-      break;
-    default:
-      break;
-  }
+  // let flag = parseInt(btn.getAttribute("data-flag"));
+  // switch (flag) {
+  //   case 0:
+  //     flag++;
+  //     break;
+  //   case 1:dsafdsf
+  //     dragContainer.classList.add("d-none");
+  //     mcqContainer.classList.remove("d-none");
+  //     flag++;
+  //     break;
+  //   case 2:
+  //     break;
+  //   default:
+  //     break;
+  // }
 
-  btn.setAttribute("data-flag", flag);
-}
-function onPrevClick(btn) {
-  const dataContainer = document.querySelector(".container");
-  const mainContainer = document.getElementById("numsImgs");
-  const mcqContainer = document.querySelector(".mcq-container");
-  const btns = document.querySelector(".btns");
-  let flag = parseInt(
-    document.getElementById("nxt-btn").getAttribute("data-flag")
-  );
-  switch (flag) {
-    case 0:
-      mainContainer.style.display = "flex";
-      dataContainer.style = "display : none ;";
-
-      break;
-    case 1:
-      dragContainer.classList.add("d-none");
-      dataContainer.classList.remove("d-none");
-      flag--;
-      break;
-    case 2:
-      mcqContainer.classList.add("d-none");
-      dragContainer.classList.remove("d-none");
-      flag--;
-    default:
-      break;
-  }
-  document.getElementById("nxt-btn").setAttribute("data-flag", flag);
-  
+  // btn.setAttribute("data-flag", flag);
 }

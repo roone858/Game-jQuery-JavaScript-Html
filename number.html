@@ -13,14 +13,10 @@
 </head>
 
 <body>
-  <<audio id="numbersSoundTrack" value="off" loop>
-    <source src="./assets/sound/numbersSoundTrack.mp3" type="audio/mpeg" />
-    <source src="./assets/sound/numbersSoundTrack.WAV" type="audio/WAV" />
-    Your browser doesn't support the audio extension.
-    </audio>
+
     <img src="./assets/image/audio-2.png" id="soundIcon" class="icons" onclick="playMusic()">
     <i class="fa-solid fa-house icons" id="homeIcon" onclick="goToHome()"></i>
-    <div id="numsImgs">
+    <div id="game-container">
       <img class="numbers" src="./assets/image/numbersPage/1.png" id="num1" onclick="lesson(this)" />
       <img class="numbers" src="./assets/image/numbersPage//2.png" id="num2" onclick="lesson(this)" />
       <img class="numbers" src="./assets/image/numbersPage//3.png" id="num3" onclick="lesson(this)" />
@@ -45,6 +41,9 @@
       <div class="btns"></div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./scripts/number.js"></script>
 </body>
 
