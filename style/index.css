@@ -514,12 +514,14 @@ color: #fff;
      text-transform: uppercase;
      padding: 1rem 0;
      font-size: 24px;
+      font-family: "Ubuntu", sans-serif;
  }
  
  .contact .rows .row-left p {
      text-transform: capitalize;
      font-size: 16px;
      margin-right: 2rem;
+     font-family: "Ubuntu", sans-serif;
     
  
  }
