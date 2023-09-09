@@ -82,7 +82,7 @@ nav ul li:hover>a {
      color: #fff
 }
 nav ul li a.nav-link {
-    font-size: 11px;
+    font-size: 12px;
 }
 nav ul li a.nav-link:hover {
      color: #fff
@@ -118,10 +118,13 @@ nav ul li:last-child {
 
 @media screen and (max-width: 992px) {
      .main {
-          height: 90vh;
+          height: 80vh;
           display: flex;
           justify-content: center;
           align-items: center;
+     }
+     nav ul>* {
+          margin: 1rem;
      }
 }
 
