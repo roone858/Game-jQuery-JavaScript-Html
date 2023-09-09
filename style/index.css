@@ -35,38 +35,37 @@
 nav {
      position: fixed;
      z-index: 999;
-     display: flex;
      align-items: center;
      justify-content: space-between;
      width: 100%;
      background-color: #fff;
      color: black;
      font-weight: 900;
-     padding: 0 4rem;
+    
      text-transform: uppercase;
      box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 nav img {
-     padding: 0.5rem 0rem;
+  
      width :5rem
 }
 
 nav ul {
      list-style-type: none;
-     padding: 1rem 0rem;
+   
      display: flex;
      justify-content: space-between;
      align-items: center;
 }
 
 nav ul>* {
-     margin-left: 1rem;
+     margin-left: 0.5rem;
      border-radius: 8px;
      transition: 0.3s;
-     font-size: 12px;
      letter-spacing: 1px;
-     padding: 0.5rem 1rem;
+     padding: 5px 1rem;
+     font-size: 12px;
 }
 
 nav ul li a {
@@ -96,6 +95,10 @@ nav ul li:last-child {
      background-color: var(--orange);
      color: #fff;
 }
+.openPath a {
+     background-color: var(--orange);
+     color: #fff;
+}
 
 .main {
      position: relative;
@@ -104,21 +107,18 @@ nav ul li:last-child {
      background-size: cover;
 }
 
-.rows {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     padding: 2rem;
-}
+@media screen and (max-width: 992px) {
+     .main {
+       height: 90vh;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
+   }
 
-.left {
-     position: relative;
-     margin-top: 7rem;
-}
 
-.right {
-     width: 50%;
-}
+
+
 
 .header {
      text-align: center;
@@ -410,16 +410,14 @@ button:hover {
 .panels {
      display: flex;
      justify-content: center;
-     padding: 2rem 4rem;
-     margin: 0rem 2rem;
+   
 }
 
 
 .panels .static-ads {
      background-image: url("../assets/image/home/kids/info-block-1.jpg");
-     width: 50%;
      height: 300px;
-     margin-right: 2rem;
+     
      border-radius: 10px;
 
 }
@@ -428,7 +426,6 @@ button:hover {
      display: flex;
      background-image: url("../assets/image/home/kids/1-2.webp");
      background-size: cover;
-     width: 50%;
      height: 300px;
      border-radius: 10px;
      overflow: hidden;
@@ -503,13 +500,7 @@ color: #fff;
  }
  
  
- .contact .rows {
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-     gap: 3rem;
-     padding-top: 1rem;
- }
- 
+
  .contact .rows .row-left h3 {
      text-transform: uppercase;
      padding: 1rem 0;
@@ -599,7 +590,7 @@ color: #fff;
      border-radius: 25px;
      outline: 0;
      caret-color: #fff;
- 
+     margin: 1rem 0;
  
  }
  

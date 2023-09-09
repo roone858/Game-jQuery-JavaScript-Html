@@ -5,6 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+        integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
@@ -19,60 +22,60 @@
 
 <body>
     <div class="home">
-        <div class="container">
 
-            <nav>
-                <div class="logo">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+
+
                     <img src="assets/image/home/logo.webp" alt="" srcset="">
-                </div>
-                <ul>
-                    <li class="openPath">Home</li>
-                    <li  ><a href="#team">About us</a></li>
-                    <li  ><a href="#contact">Contact us</a></li>
-                    <li>Our Mission</li>
-                    <li>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </li>
-                </ul>
-            </nav>
-            <div class="content ">
-                <div class="main">
-                    <div class="assets " style="position: absolute;">
-                        <!-- <div class="stars" style="position: absolute; top: -80px">
-                            <img style="position: relative; left: 30px;top: -80px" src="assets/image/home/11.webp" alt="">
-                            <img style="position: relative; left: 200px; top: -50px;" src="assets/image/home/11.webp" alt="">
-                            <img style="position: relative; left: 400px ; transform: scaleX(-1);" src="assets/image/home/11.webp" alt="">
-                            <img style="position: relative; left: 620px;top: -60px;" src="assets/image/home/11.webp" alt="">
-                            <img style="position: relative; left: 800px;transform: scaleX(-1);" src="assets/image/home/11.webp" alt="">
-                            <img style="position: relative; left: 900px;top: -80px;transform: scaleX(-1);" src="assets/image/home/11.webp" alt="">
-                        </div> -->
-                        <!-- <div class="cloudes " style="">
-                            <img src="assets/image/home/3.webp" alt="">
-                            <img src="assets/image/home/2.webp" alt="">
-                        </div> -->
-                    </div>
-                    <div class="rows">
-                        <div class="left">
-                            <img src="assets/image/home/boys.webp" alt="" srcset="">
-                        </div>
-                        <div class="right">
-                            <h1 style="font-size: 3rem; text-transform:uppercase ;">Pick the best Game for your kids
-                            </h1>
-                            <p class="main-p">Make play time a blast with our finest toys and games!
-                            </p>
-                            <a href="index.html">
-                                <button id="getStarted">
-                                    Get Started
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <section class="slider-container">
-                    <button id="prev-btn">&lt</button>
-                    <div class="slider">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item openPath"><a class="nav-link" href="#team">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">About us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact us</a></li>
 
-                        <!-- <div class="icon-card">
+                        <li>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="main">
+            <div class="container ">
+                <div class="row ">
+                    <div class="left my-5 col-6 d-none  d-sm-none d-lg-flex">
+                        <img src="assets/image/home/boys.webp" alt="" srcset="">
+                    </div>
+                    <div
+                        class="right d-flex flex-column text-center text-lg-start align-items-center align-items-lg-start  justify-content-center my-5   py-5 p-lg-0 col-12 col-sm-12 col-lg-6">
+                        <h1 style="font-size: 3rem; text-transform:uppercase ;">Pick the best Game for your kids
+                        </h1>
+                        <p class="main-p">Make play time a blast with our finest toys and games!
+                        </p>
+                        <a href="index.html">
+                            <button id="getStarted">
+                                Get Started
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="slider-container">
+            <button id="prev-btn">&lt</button>
+            <div class="slider">
+
+                <!-- <div class="icon-card">
                             <img src="./assets/image/home/icons/1a.webp" alt="" srcset="">
                         <span>Remote Control & Play Vehicles</span>
                     </div>
@@ -88,137 +91,148 @@
                         <img src="./assets/image/home/icons/5.webp" alt="" srcset="">
                         <span>Building & Learning</span>
                     </div> -->
-                    </div>
-                    <button id="next-btn">&gt;</button>
-                </section>
-                <!-- start team -->
-                <div class="team" id="team">
-                    <div class="container">
-                        <div class="row">
-                            <h2>our team</h2>
-                        </div>
-                        <div class="row">
-                            <div class="testimonial-container">
-                                <div class="team-header">
-                                    
-                                <img src="./assets/image/home/عصفور.webp" alt="" srcset="">
-                                <p>What About our Happy Team</p>
-                                </div>
-                                <div class="progress-bar"></div>
+            </div>
+            <button id="next-btn">&gt;</button>
+        </section>
+        <!-- start team -->
+        <div class="team my-5" id="team">
+            <div class="container">
+                <div class="row text-center">
+                    <h2>our team</h2>
+                </div>
+                <div class="row">
+                    <div class="testimonial-container">
+                        <div class="team-header">
 
-                                <p class="testimonial">
-                                    I've worked with literally hundreds of HTML/CSS developers and I
-                                    have to say the top spot goes to this guy. This guy is an amazing
-                                    developer. He stresses on good, clean code and pays heed to the
-                                    details. I love developers who respect each and every aspect of a
-                                    throughly thought out design and do their best to put it in code.
-                                    He goes over and beyond and transforms ART into PIXELS - without a
-                                    glitch, every time.
-                                </p>
-                                <div class="user">
-                                    <img src="https://randomuser.me/api/portraits/men/97.jpg" alt="user"
-                                        class="user-image" />
-                                    <div class="user-details">
-                                        <h4 class="username">Mahmoud Gamal</h4>
-                                        <p class="role">Dev Ops</p>
+                            <img src="./assets/image/home/عصفور.webp" alt="" srcset="">
+                            <p>What About our Happy Team</p>
+                        </div>
+                        <div class="progress-bar"></div>
+
+                        <p class="testimonial">
+                            I've worked with literally hundreds of HTML/CSS developers and I
+                            have to say the top spot goes to this guy. This guy is an amazing
+                            developer. He stresses on good, clean code and pays heed to the
+                            details. I love developers who respect each and every aspect of a
+                            throughly thought out design and do their best to put it in code.
+                            He goes over and beyond and transforms ART into PIXELS - without a
+                            glitch, every time.
+                        </p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/men/97.jpg" alt="user" class="user-image" />
+                            <div class="user-details">
+                                <h4 class="username">Mahmoud Gamal</h4>
+                                <p class="role">Dev Ops</p>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="scripts/scripttestmonial.js"></script>
+                </div>
+
+            </div>
+        </div>
+        <section class="panels my-5">
+            <div class="container">
+
+                <div class="row">
+                    <div class="p-2  col-md-6 col-sm-12 ">
+                        <div class="static-ads  shadow">
+                            static ads
+                        </div>
+                    </div>
+                    <div class="p-2   col-md-6 col-sm-12">
+                        <div class="dynamic-ads  shadow">
+                            <div class="btns">
+                                <button class="open-ads-btn ">&gt;</button>
+                                <button>&gt;</button>
+                                <button>&gt;</button>
+                                <button>&gt;</button>
+                            </div>
+                            <div class="ads-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- start contact -->
+        <div class="contact py-2 my-5" id="contact">
+            <div class="contact-container">
+                <div class="header">
+                    <div class="title">
+                        <h2>contact us</h2>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <div class="rows">
+                        <div class="row">
+                            <div class="  p-2 col-12 col-lg-6">
+
+                                <div class="row-left  ">
+                                    <h3>feel free to ask us !</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                                        veniam beatae velit modi doloribus, ut possimus sit voluptatem
+                                        molestias dignissimos quasi.
+                                    </p>
+                                    <div class="mail">
+                                        <i class="fa-sharp fa-solid fa-envelope my-2"></i>
+                                        <div>
+                                            <label>mail us </label>
+                                            <p>team4@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="phone ">
+                                        <i class="fa-solid fa-square-phone my-2"></i>
+                                        <div>
+                                            <label>call us </label>
+                                            <p>01122112211</p>
+                                        </div>
+                                    </div>
+                                    <div class="social-media">
+                                        <a href="www.facebok.com"><i class="fa-brands fa-square-facebook"></i></a>
+                                        <a href="www.facebok.com"><i class="fa-brands fa-linkedin"></i></a>
+                                        <a href="www.facebok.com"><i class="fa-brands fa-square-twitter"></i></a>
+                                        <a href="www.facebok.com"><i class="fa-brands fa-square-whatsapp"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <script src="scripts/scripttestmonial.js"></script>
+                            <div class="  p-2 col-12 col-lg-6">
+
+                                <div class="row-right">
+                                    <div class="row">
+                                        <input class="input-group "  placeholder="Your Name" />
+                                        <input class="input-group "  placeholder="Your email" />
+                                        <input class="input-group "  placeholder="Your subject" />
+                                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        <button>SEND MASSAGE</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    
                     </div>
                 </div>
-                <section class="panels">
-                    <div class="static-ads">
-                        static ads
-                    </div>
-                    <div class="dynamic-ads">
-                        <div class="btns">
-                            <button class="open-ads-btn ">&gt;</button>
-                            <button>&gt;</button>
-                            <button>&gt;</button>
-                            <button>&gt;</button>
-                        </div>
-                        <div class="ads-container">
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <footer>
+            <img src="./assets/image/home/logo-footer.webp" alt="" srcset="">
+            <p>Make play time a blast with our finest games!</p>
+            <div class="icons">
+                <img src="./assets/image/home/social media/facebook-h.webp" alt="">
+                <img src="./assets/image/home/social media/linkedin.webp" alt="">
+                <img src="./assets/image/home/social media/pinterest.webp" alt="">
+                <img src="./assets/image/home/social media/twitter-h.webp" alt="">
+            </div>
+        </footer>
 
 
-                        </div>
-                    </div>
-                </section>
-                   <!-- start contact -->
-    <div class="contact" id="contact">
-        <div class="contact-container">
-          <div class="header">
-            <div class="title">
-              <h2>contact us</h2>
-            </div>
-          </div>
-     
-          <div class="rows">
-            <div class="row-left">
-              <h3>feel free to ask us !</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                veniam beatae velit modi doloribus, ut possimus sit voluptatem
-                molestias dignissimos quasi.
-              </p>
-              <div class="mail">
-                <i class="fa-sharp fa-solid fa-envelope"></i>
-                <div>
-                  <label>mail us </label>
-                  <p>team4@gmail.com</p>
-                </div>
-              </div>
-              <div class="phone">
-                <i class="fa-solid fa-square-phone"></i>
-                <div>
-                  <label>call us </label>
-                  <p>01122112211</p>
-                </div>
-              </div>
-              <div class="social-media">
-                <a href="www.facebok.com"
-                  ><i class="fa-brands fa-square-facebook"></i
-                ></a>
-                <a href="www.facebok.com"
-                  ><i class="fa-brands fa-linkedin"></i
-                ></a>
-                <a href="www.facebok.com"
-                  ><i class="fa-brands fa-square-twitter"></i
-                ></a>
-                <a href="www.facebok.com"
-                  ><i class="fa-brands fa-square-whatsapp"></i
-                ></a>
-              </div>
-            </div>
-            <div class="row-right">
-              <div class="input-group">
-                <input type="text" placeholder="Your Name" />
-                <input type="text" placeholder="Your email" />
-                <input type="text" placeholder="Your subject" />
-              </div>
-              <textarea name="" id="" cols="30" rows="10"></textarea>
-              <button>SEND MASSAGE</button>
-            </div>
-          </div>
-          <!-- row -->
-        </div>
-        <!-- container -->
-      </div>
-                <footer>
-                    <img src="./assets/image/home/logo-footer.webp" alt="" srcset="">
-                    <p>Make play time a blast with our finest games!</p>
-                    <div class="icons">
-                        <img src="./assets/image/home/social media/facebook-h.webp" alt="">
-                        <img src="./assets/image/home/social media/linkedin.webp" alt="">
-                        <img src="./assets/image/home/social media/pinterest.webp" alt="">
-                        <img src="./assets/image/home/social media/twitter-h.webp" alt="">
-                    </div>
-                </footer>
-            </div>
-        </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
+        integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
