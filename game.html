@@ -1,12 +1,33 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Js Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+
     <link rel="stylesheet" href="style/gameStyle.css" />
   </head>
   <body>
-    <h1>Game</h1>
+    <div class="game">
 
+      <!-- <audio id="soundMb3Id" src="voice/3afareet El Asphalt.mp3" allow="autoplay" loop="loop"></audio> -->
+      <audio id="soundBeb"  src="assets/sound/car/Beb.mp4" type="audio/mpeg"></audio>
+
+      <div class="score"></div>
+      <div class="highScore"></div>
+
+      <div class="startScreen">
+        <button class="ClickToStart">Start Game</button>
+        <br />
+        <p id="gameOver"></p>
+      </div>
+
+      <div class="gameArea"></div>
+
+    </div>
+    <div class="sound" id="soundMb3">
+      <a href="assets/image/animal width.avif" style="width: 20px"></a>
+    </div>
     <script src="scripts/game.js"></script>
   </body>
 </html>
