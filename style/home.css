@@ -209,7 +209,7 @@ button:hover {
 }
 
 .slider {
-     padding: 2rem;
+     padding: 2rem 0 0 0;
      display: flex;
      position: relative;
      align-items: flex-start;
@@ -268,8 +268,8 @@ button:hover {
      color: #fff;
      border-radius: 15px;
      margin: 20px auto;
-     padding: 50px 80px;
-     max-width: 768px;
+     padding: 2rem;
+     max-width: 900px;
      position: relative;
 
 
@@ -293,7 +293,7 @@ button:hover {
 .testimonial {
      line-height: 28px;
      text-align: justify;
-     padding: 30px 0;
+     padding: 1rem 0;
      height: 80%;
      font-size: 1rem;
      font-weight: 600;
@@ -324,7 +324,7 @@ button:hover {
 
 .user .role {
      font-weight: normal;
-     margin: 10px 0;
+     
 }
 
 .progress-bar {
