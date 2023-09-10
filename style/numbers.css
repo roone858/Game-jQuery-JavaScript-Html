@@ -7,7 +7,7 @@
 body {
      background-image: url("../assets/image/lettersPage/backgrounds/1.jpg");
      /* background-position: center; */
-
+text-align: center;
 }
 
 .icons {
@@ -121,7 +121,7 @@ margin: 1rem;
           top: 24%
      }
 }
-.container{
+.lesson-container{
      display: flex;
      flex-direction: column;
 
@@ -138,7 +138,7 @@ margin: 1rem;
      display: flex;
      justify-content: space-around;
 }
-.btns button {
+ button {
      padding: 1rem;
      background-color: #145af09d;
      border: #f0bd14c0 solid 2px;
@@ -165,7 +165,47 @@ margin: 1rem;
 #animalsImgs{
      width:60%;
 }
+.mcq-container {
+     padding: 2rem;
+     text-align: center;
+}
+.quiz-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+}
 .selectedAnimals {
      height: 150px;
 
 }
+.choicesImgs img {
+     width: 100px;
+     margin: 2rem;
+}
+.questions img {
+     width: 100px; 
+}
+.result img {
+     width : 100px
+}
+
+.glow {
+     font-size: 100px;
+     color: #fff;
+    
+     cursor: pointer;
+     -webkit-animation: glow 1s ease-in-out infinite alternate;
+     -moz-animation: glow 1s ease-in-out infinite alternate;
+     animation: glow 1s ease-in-out infinite alternate;
+   }
+ @-webkit-keyframes glow {
+     from {
+         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffffff, 0 0 40px #ffffff,
+         0 0 50px #ffffff, 0 0 60px #ffffff, 0 0 70px #ffffff;
+     }
+     to {
+         text-shadow: 0 0 20px #fff, 0 0 30px #0c22e0, 0 0 40px #0c22e0, 0 0 50px #0c22e0,
+         0 0 60px #0c22e0, 0 0 70px #0c22e0, 0 0 80px #0c22e0;
+     }
+ }

@@ -6,11 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Numbers Game</title>
-  <link
-  rel="icon"
-  type="image/png"
-  href="./assets/image/favicon.png"
-/>
+  <link rel="icon" type="image/png" href="./assets/image/favicon.png" />
   <link rel="stylesheet" href="./style/numbers.css">
   <style>
 
@@ -19,37 +15,48 @@
 
 <body>
 
-    <img src="./assets/image/audio-2.png" id="soundIcon" class="icons" onclick="playMusic()">
-    <i class="fa-solid fa-house icons" id="homeIcon" onclick="goToHome()"></i>
-    <div id="game-container">
-      <img class="numbers" src="./assets/image/numbersPage/1.png" id="num1" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//2.png" id="num2" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//3.png" id="num3" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//4.png" id="num4" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//5.png" id="num5" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//6.png" id="num6" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//7.png" id="num7" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//8.png" id="num8" onclick="lesson(this)" />
-      <img class="numbers" src="./assets/image/numbersPage//9.png" id="num9" onclick="lesson(this)" />
-    </div>
-    <audio id="selectedSound">
-      <source src="" type="audio/mpeg" />
-      Your browser doesn't support the audio extension.
-    </audio>
-    <div class="container">
-      <div class="data-container ">
-        <img id="selectedImg" src=""></img>
-        <div id="animalsImgs">
-        
-        </div>
-      </div>
-      <div class="btns"></div>
-    </div>
+  <img src="./assets/image/audio-2.png" id="soundIcon" class="icons" onclick="playMusic()">
+  <i class="fa-solid fa-house icons" id="homeIcon" onclick="goToHome()"></i>
+  <div id="game-container">
+    <img class="numbers" src="./assets/image/numbersPage/1.png" id="num1" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//2.png" id="num2" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//3.png" id="num3" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//4.png" id="num4" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//5.png" id="num5" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//6.png" id="num6" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//7.png" id="num7" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//8.png" id="num8" onclick="lesson(this)" />
+    <img class="numbers" src="./assets/image/numbersPage//9.png" id="num9" onclick="lesson(this)" />
+  </div>
+  <audio id="selectedSound">
+    <source src="" type="audio/mpeg" />
+    Your browser doesn't support the audio extension.
+  </audio>
+  <div class="lesson-container">
+    <div class="data-container ">
+      <img id="selectedImg" src=""></img>
+      <div id="animalsImgs">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      </div>
+    </div>
+    <div class="btns"></div>
+  </div>
+  <span class="glow" id="glowQuiz" onclick="quiz()">Quiz</span>
+  <div class="mcq-container">
+    <div class="result">
+      <img class="ROW" id="right" src="./assets/image/numbersPage/right.png" style="display: none;"/>
+      <img class="ROW" id="wrong" src="./assets/image/numbersPage/wrong.png" style="display: none; "/>
+    </div>
+    <div class="quiz-container">
+      <div class="questions"> </div>
+      <div class="choicesImgs"></div>
+    </div>
+    <button type="button" style="display: none;" id="next" onclick="quiz()">Next</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./scripts/number.js"></script>
+  <script src="./scripts/number.js"></script>
 </body>
 
 </html>
