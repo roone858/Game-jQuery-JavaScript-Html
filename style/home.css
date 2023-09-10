@@ -33,7 +33,7 @@
 }
 
 nav {
-     position: fixed;
+    
      z-index: 999;
      align-items: center;
      justify-content: space-between;
@@ -44,6 +44,9 @@ nav {
 
      text-transform: uppercase;
      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+.navbar{
+     position: fixed;
 }
 
 nav img {
@@ -118,7 +121,7 @@ nav ul li:last-child {
 
 @media screen and (max-width: 992px) {
      .main {
-          height: 80vh;
+          height: 90vh;
           display: flex;
           justify-content: center;
           align-items: center;
