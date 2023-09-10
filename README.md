@@ -2,16 +2,16 @@
 
 A simple game built with jQuery, JavaScript, and HTML.
 
-![Game Screenshot](./docs/screenshots/1.png)
-![Game Screenshot](./docs/screenshots/2.png)
-![Game Screenshot](./docs/screenshots/3.png)
-![Game Screenshot](./docs/screenshots/4.png)
-![Game Screenshot](./docs/screenshots/5.png)
-![Game Screenshot](./docs/screenshots/6.png)
-![Game Screenshot](./docs/screenshots/7.png)
-![Game Screenshot](./docs/screenshots/8.png)
-![Game Screenshot](./docs/screenshots/9.png)
-![Game Screenshot](./docs/screenshots/10.png)
+![Game Screenshot](./Docs/screenshots/1.png)
+![Game Screenshot](./Docs/screenshots/2.png)
+![Game Screenshot](./Docs/screenshots/3.png)
+![Game Screenshot](./Docs/screenshots/4.png)
+![Game Screenshot](./Docs/screenshots/5.png)
+![Game Screenshot](./Docs/screenshots/6.png)
+![Game Screenshot](./Docs/screenshots/7.png)
+![Game Screenshot](./Docs/screenshots/8.png)
+![Game Screenshot](./Docs/screenshots/9.png)
+![Game Screenshot](./Docs/screenshots/10.png)
 
 ## Table of Contents
 
