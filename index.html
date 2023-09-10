@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Js Project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="style/homeStyle.css" />
-  </head>
-  <body>
-    <div class="index">
-      <audio
-        id="soundMb3Id"
-        src="assets/sound/home.mp4"
-        allow="autoplay"
-        loop="loop"
-      ></audio>
-      <div class="card" id="card-1" onclick="onClickCard('number.html')">
-        <div class="card-content">
-          <img src="assets/image/number.avif" alt="" class="cardImg" />
-          <br /><br />
-          <p class="card-text">Number</p>
+<head>
+  <meta charset="UTF-8" />
+  <title>Js Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+    integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style/homeStyle.css" />
+</head>
+
+<body>
+  <div class="sound-container">
+    <div class="col-12">
+      <audio id="soundMb3Id" src="assets/sound/home.mp4" allow="autoplay" loop="loop"></audio>
+
+      <div class="sound" id="soundMb3">
+        <a href="assets/image/audio-2.png" style="width: 20px"></a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center ">
+      <!-- ------------------------------ card1 ---------------------------------------- -->
+      <div class="col-sm-12 col-md-6 col-lg-4 p-3">
+        <div class="card shadow-sm p-3 h-100 bg-body rounded" id="card-1" onclick="onClickCard('number.html')">
+          <div class="card-content mb-2">
+            <img src="assets/image/number.avif" class="img-fluid rounded cardImg" alt="resposive image" />
+         
+          </div>
+          <p class="mt-auto card-text text-center  p-2 fw-bold text-white rounded bg-info">Number</p>
         </div>
       </div>
-      <div class="card" id="card-2" onclick="onClickCard('letters.html')">
-        <div class="card-content">
-          <img src="assets/image/ABC.avif" alt="" class="cardImg" />
-          <br /><br />
-          <p class="card-text">Letters</p>
+      <!-- -------------------------card 2 -------------------------------------- -->
+      <div class="col-sm-12 col-md-6 col-lg-4 p-3">
+        <div class="card shadow-sm p-3 h-100 bg-body rounded" id="card-1" onclick="onClickCard('letters.html')">
+          <div class="card-content mb-2">
+            <img src="assets/image/ABC.avif" class="img-fluid rounded cardImg" alt="resposive image" />
+         
+          </div>
+          <p class="mt-auto card-text text-center  p-2 fw-bold text-white rounded bg-info">Letters</p>
         </div>
       </div>
-      <div class="card" id="card-3" onclick="onClickCard('animals.html')">
-        <div class="card-content">
-          <img src="assets/image/animal width.avif" alt="" class="cardImg" />
-          <br /><br />
-          <p class="card-text">Animals</p>
-        </div>
-      </div>
-      <div class="card" id="card-4" onclick="onClickCard('game.html')">
-        <div class="card-content">
-          <img src="assets/image/car-game.jpg" alt="" class="cardImg" />
-          <br /><br />
-          <p class="card-text">Car game</p>
+      <!-- ---------------------------- card 3--------------------------- -->
+      <div class="col-sm-12 col-md-6 col-lg-4 p-3">
+        <div class="card shadow-sm p-3 h-100 bg-body rounded" id="card-1" onclick="onClickCard('game.html')">
+          <div class="card-content mb-2">
+            <img src="assets/image/car-game.jpg" class="img-fluid rounded cardImg" alt="resposive image" height="300" />
+         
+          </div>
+          <p class="mt-auto card-text text-center  p-2 fw-bold text-white rounded bg-info">Car Game</p>
         </div>
       </div>
     </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
+    integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="scripts/index.js"></script>
+</body>
 
-    <div class="sound" id="soundMb3">
-      <a href="assets/image/animal width.avif" style="width: 20px"></a>
-    </div>
-
-    <script src="scripts/index.js"></script>
-  </body>
 </html>
