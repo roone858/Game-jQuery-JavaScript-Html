@@ -19,15 +19,15 @@ const testimonials = [
   },
   {
     name: "Safy Ibrahim",
-    position: "Data Entry",
+    position: "Front-end Dev",
     photo: "https://randomuser.me/api/portraits/men/97.jpg",
     text: "She is a hard worker. Communication was also very good with her and She was very responsive all the time, something not easy to find in many freelancers. We'll definitely repeat with him.",
   },
   {
-    name: "Keroles George",
-    position: "Data Entry",
+    name: "Kirollos George",
+    position: "Front-end Dev",
     photo: "https://randomuser.me/api/portraits/men/97.jpg",
-    text: "She is a hard worker. Communication was also very good with her and She was very responsive all the time, something not easy to find in many freelancers. We'll definitely repeat with him.",
+    text: "Working with Kirollos has been a great experience. and fast in react native and publishing on google play and apple store, and Having good communication skills, he's easy to work with, driven and enthusiastic. Highly recommended!",
   },
 ];
 
