@@ -121,7 +121,16 @@
      }
  
      /* //--------------------------------------------------------------------------------------- */
- 
+     @media screen and (max-width: 1050px) {
+      .score , .highScore {
+        display: none;
+      }
+      .game{
+        background-size: auto;
+      }
+    }
+
+    
      /* // style of sound */
  /*
      .play-icon {
