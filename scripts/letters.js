@@ -182,7 +182,7 @@ $(document).ready(function () {
       .on("click", function () {
         sound.get(0).play();
       });
-    var tip = $("<p>").text("Click to Listen");
+    var tip = $("<p>").addClass("mb-auto").text("Click to Listen");
     leftDiv.append(imgLeft, tip);
 
     var rightDiv = $("<div>").addClass("right");
@@ -365,7 +365,7 @@ function createNextButton() {
   .on("click", function () {
     onNextClick(this);
   });
-
+  buttonElement.addClass("btn btn-warning btn-lg")
 return buttonElement[0];
   // var buttonElement = document.createElement("button");
   // buttonElement.onclick = function () {
@@ -383,10 +383,12 @@ return buttonElement[0];
       .attr("id", "prev-btn")
       .attr("data-flag", "0")
       .text("Previous")
+      
       .on("click", function () {
         onPrevClick(this);
       });
-
+      buttonElement.addClass("btn btn-warning btn-lg")
+      
     return buttonElement[0];
   }
 
@@ -406,6 +408,7 @@ return buttonElement[0];
       case 1:
         dragContainer.addClass("d-none");
         mcqContainer.removeClass("d-none");
+        $("#nxt-btn").addClass("disabled")
         flag++;
         break;
       case 2:
@@ -437,6 +440,7 @@ return buttonElement[0];
         flag--;
         break;
       case 2:
+        $("#nxt-btn").removeClass("disabled")
         mcqContainer.addClass("d-none");
         dragContainer.removeClass("d-none");
         flag--;

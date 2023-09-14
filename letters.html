@@ -6,11 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Alphabetical Game</title>
-  <link
-  rel="icon"
-  type="image/png"
-  href="./assets/image/favicon.png"
-/>
+  <link rel="icon" type="image/png" href="./assets/image/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+    integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./style/letters.css">
   <style>
     body {
@@ -53,20 +63,24 @@
 </head>
 
 <body>
-  <div class="sound-container">
-    <audio id="soundMb3Id" src="assets/sound/home.mp4" allow="autoplay" loop="loop"></audio>
-    <div class="sound" id="soundMb3">
-      <a style="width: 20px"></a>
+  <div class="container">
+    <div class="sound-container">
+      <audio id="soundMb3Id" src="assets/sound/home.mp4" allow="autoplay" loop="loop"></audio>
+      <div class="sound" id="soundMb3">
+        <a style="width: 20px"></a>
+      </div>
+    </div>
+    <div id="game-container" class=" py-4">
+      <img src="./assets/image/home/عصفور.webp" alt="">
+      <h1 class="m-2">Click the Alphabetical Letters</h1>
+    </div>
+    <div id="lesson-container" class=" p-4 m-2">
+      <p id="lesson-text">Click on a letter to see the lesson.</p>
     </div>
   </div>
-  <div id="game-container">
-
-    <h1>Click the Alphabetical Letters</h1>
-  </div>
-  <div id="lesson-container">
-    <p id="lesson-text">Click on a letter to see the lesson.</p>
-  </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
+    integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

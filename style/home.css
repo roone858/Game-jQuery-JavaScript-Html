@@ -167,6 +167,7 @@ h1 {
      box-shadow: 5px 5px 0px 0px rgb(15, 93, 145);
      cursor: pointer;
      transition: 0.3s;
+     
 }
 
 #getStarted:hover {
@@ -205,6 +206,7 @@ h1 {
      cursor: pointer;
      transition: all 0.2s ease;
      border-radius: 200%;
+
 }
 
 button:hover {

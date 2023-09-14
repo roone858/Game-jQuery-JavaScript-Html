@@ -5,9 +5,21 @@
 }
 
 body {
-     background-image: url("../assets/image/lettersPage/backgrounds/1.jpg");
-     /* background-position: center; */
-text-align: center;
+     min-height: 100vh;
+     background-image: url(" ../assets/image/lettersPage/backgrounds/1.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+
+     text-align: center;
+
+}
+
+@media only screen and (max-width: 600px) {
+     body {
+          background-position: top;
+          background-repeat: no-repeat;
+          background-size: cover;
+     }
 }
 
 .icons {
@@ -45,7 +57,7 @@ text-align: center;
 
 .numbers {
      width: 100px;
-margin: 1rem;
+     margin: 1rem;
 
      animation-name: numbers;
 }
@@ -116,29 +128,33 @@ margin: 1rem;
      from {
           top: -10%;
      }
-     
+
      to {
           top: 24%
      }
 }
-.lesson-container{
+
+.lesson-container {
      display: flex;
      flex-direction: column;
 
 }
-.data-container{
-     padding:2rem;
+
+.data-container {
+     padding: 2rem;
      display: flex;
      align-items: center;
      justify-content: space-around;
      height: 80vh;
 }
-.btns{
+
+.btns {
      width: 100%;
      display: flex;
      justify-content: space-around;
 }
- button {
+
+button {
      padding: 1rem;
      background-color: #145af09d;
      border: #f0bd14c0 solid 2px;
@@ -146,66 +162,75 @@ margin: 1rem;
      cursor: pointer;
      transition: 0.3s;
      font-weight: 600;
-     }
-     .btns button:hover {
-      
-       background-color: #f0bd14c0;
-       border:  #145af09d solid 2px;
-       border-radius: 1rem;
-       }
-       
+}
+
+.btns button:hover {
+
+     background-color: #f0bd14c0;
+     border: #145af09d solid 2px;
+     border-radius: 1rem;
+}
+
 #selectedImg {
      width: 150px;
 
-    
+
      animation-name: selectedNum;
      animation-duration: 2s;
 }
 
-#animalsImgs{
-     width:60%;
+#animalsImgs {
+     width: 60%;
 }
+
 .mcq-container {
      padding: 2rem;
      text-align: center;
 }
+
 .quiz-container {
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
 }
+
 .selectedAnimals {
      height: 150px;
 
 }
+
 .choicesImgs img {
      width: 100px;
      margin: 2rem;
 }
+
 .questions img {
-     width: 100px; 
+     width: 100px;
 }
+
 .result img {
-     width : 100px
+     width: 100px
 }
 
 .glow {
      font-size: 100px;
      color: #fff;
-    
+
      cursor: pointer;
      -webkit-animation: glow 1s ease-in-out infinite alternate;
      -moz-animation: glow 1s ease-in-out infinite alternate;
      animation: glow 1s ease-in-out infinite alternate;
-   }
- @-webkit-keyframes glow {
+}
+
+@-webkit-keyframes glow {
      from {
-         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffffff, 0 0 40px #ffffff,
-         0 0 50px #ffffff, 0 0 60px #ffffff, 0 0 70px #ffffff;
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffffff, 0 0 40px #ffffff,
+               0 0 50px #ffffff, 0 0 60px #ffffff, 0 0 70px #ffffff;
      }
+
      to {
-         text-shadow: 0 0 20px #fff, 0 0 30px #0c22e0, 0 0 40px #0c22e0, 0 0 50px #0c22e0,
-         0 0 60px #0c22e0, 0 0 70px #0c22e0, 0 0 80px #0c22e0;
+          text-shadow: 0 0 20px #fff, 0 0 30px #0c22e0, 0 0 40px #0c22e0, 0 0 50px #0c22e0,
+               0 0 60px #0c22e0, 0 0 70px #0c22e0, 0 0 80px #0c22e0;
      }
- }
+}
