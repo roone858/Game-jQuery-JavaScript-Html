@@ -1,0 +1,550 @@
+:root {
+     --primary-gradiant: linear-gradient(0deg, rgb(84, 76, 249) 0%, rgb(144, 49, 141) 0%, rgb(204, 22, 32) 0%, rgb(207, 20, 31) 100%);
+     --primary-color: rgb(185, 10, 19);
+     --secondary-color: rgb(22, 35, 43);
+     --text-color: rgb(39, 39, 39);
+     --field-color: rgb(255, 255, 255);
+}
+
+* {
+     box-sizing: border-box;
+}
+
+header {
+     font-size: 24px;
+     padding: 20px 130px;
+     background-color: var(--secondary-color);
+     border-radius: 4px;
+     height: 150px;
+     width: 80%;
+     margin: 0 auto;
+ 
+     color: rgb(255, 255, 255);
+     font-weight: 600;
+     text-align: center;
+     display: grid;
+     align-content: center;
+     padding: 20px 160px;
+     position: relative;
+     top: 80px;
+     overflow: hidden;
+}
+
+header::after {
+     content: "";
+     background: var(--primary-gradiant);
+     width: 150px;
+     height: 100%;
+     border-radius: 0;
+     position: absolute;
+     right: 0;
+     bottom: 0;
+     clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0% 100%);
+}
+
+header::before {
+     content: "";
+     background: var(--primary-gradiant);
+     width: 80px;
+     height: 80px;
+     border-radius: 0;
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     clip-path: polygon(0 0, 50% 50%, 100% 100%, 0% 100%);
+}
+
+.steps {
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+}
+
+.quiz-inner {
+     flex: 1;
+     border-radius: 20px;
+     width: 100%;
+     border: 4px solid var(--primary-color);
+     padding: 90px 90px 0 90px;
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+}
+
+.side {
+     width: 100%;
+     height: 100%;
+     position: relative;
+     text-align: center;
+     margin-top: 20px;
+}
+
+.flex-1 {
+     flex: 1;
+}
+.result_content img{
+     max-height: 50px;
+     margin-right: 15px;
+}
+.side img:nth-child(1) {
+     width: 80%;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     margin: 0 auto;
+}
+
+.question {
+     position: absolute;
+     top: 20px;
+     right: 25px;
+     width: 100px;
+     transform: rotate(25deg);
+     opacity: 0.5;
+}
+
+form {
+     display: block;
+     margin-top: 0em;
+}
+
+.form-inner {
+     margin-top: 40px;
+}
+
+.radio-field {
+     position: relative;
+     height: 150px;
+     width: 85%;
+     margin-left: auto;
+     margin-bottom: 40px;
+     text-align: center;
+     display: grid;
+     align-items: center;
+     justify-content: center;
+     padding: 20px;
+}
+
+.radio-field input {
+     appearance: none;
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     border: solid 4px rgb(225, 225, 225);
+     border-radius: 4px;
+     background-color: var(--field-color);
+     cursor: pointer;
+     transition: 0.4s all;
+}
+
+.radio-field img {
+     width: 42px;
+     margin: 0 auto;
+}
+
+.radio-field label,
+.radio-field img {
+     position: relative;
+     z-index: 10;
+     pointer-events: none;
+}
+
+.radio-field label {
+     font-size: 25px;
+     color: var(--text-color);
+     font-weight: bold;
+     text-transform: capitalize;
+}
+
+.radio-field input::before {
+     position: absolute;
+     border: solid 4px rgb(225, 225, 225);
+     border-radius: 50%;
+     background-color: var(--field-color);
+     width: 57px;
+     height: 57px;
+     top: 42px;
+     left: -28px;
+     font-size: 24px;
+     color: var(--primary-color);
+     text-align: center;
+     font-weight: bold;
+     display: grid;
+     align-items: center;
+     transition: 0.4s all;
+}
+.radio-field input:checked::before     {
+     content: "";
+     border-color: var(--primary-color);
+     /* background-color: var(--primary-color); */
+}
+.radio-field input:checked::after {
+     content: "";
+     position: absolute;
+     border-left: solid 4px var(--primary-color);
+     border-bottom: solid 4px var(--primary-color);
+     top: 69px;
+     left: -14px;
+     width: 25px;
+     height: 15px;
+     border-radius: 3px;
+     transform: rotate(-45deg);
+     opacity: 0;
+ }
+.radio1::before {
+     content: "A";
+
+}
+
+.radio2::before {
+     content: "B";
+}
+
+.radio3::before {
+     content: "C";
+}
+
+.radio4::before {
+     content: "D";
+}
+
+.bounce-left {
+     animation: bounceleft 0.6s forwards linear;
+     opacity: 0;
+}
+
+.delay-100 {
+     animation-delay: 100ms;
+}
+.bounce-right
+{
+    animation: bounceright 0.6s forwards linear;
+    opacity: 1;
+}
+.radio-field input:checked{
+     border-color: var(--primary-color);
+
+}
+@keyframes bounceright
+{
+    0%
+    {
+        opacity: 1;
+     }
+     100%
+     {
+        opacity: 0;
+     }
+}
+
+
+.checkmark:checked::after
+{
+     transform-origin: left top;
+     animation: checkmark linear both 0.2s;
+     animation-delay: 0.1s;
+ }
+@keyframes bounceleft {
+     0% {
+          opacity: 0;
+     }
+
+     100% {
+          opacity: 1;
+     }
+}
+@keyframes checkmark
+{
+      0%
+      {
+        height: 0px;
+        width: 0;
+        opacity: 0;
+        right: 75px;
+      }
+      30%
+      {
+        height: 15px;
+        width: 0;
+        opacity: 1;
+        right: 75px;
+      }
+      to
+      {
+        height: 15px;
+        width: 25px;
+        opacity: 1;
+      }
+}
+
+
+.prev:hover i
+{
+    animation: right .4s forwards;
+}
+.next:hover i
+{
+    animation: left .4s forwards;
+}
+
+@keyframes right
+{
+    0%
+    {
+        transform: translateX(0px);
+    }
+    100%
+    {
+        transform: translateX(-10px);
+    }
+}
+@keyframes left
+{
+    0%
+    {
+        transform: translateX(0px);
+    }
+    100%
+    {
+        transform: translateX(10px);
+    }
+}
+.h-border
+{
+    animation: q-reveal 0.5s linear forwards;
+}
+@keyframes q-reveal
+{
+    from
+    {
+        transform: translateX(200px);
+    }
+}
+
+footer {
+     width: 50%;
+     margin: 30px auto 20px auto;
+     height: auto;
+}
+
+.step-bar {
+     border: solid 1px rgb(29, 29, 29);
+     width: 100%;
+     height: 30px;
+     border-radius: 50px;
+     overflow: hidden;
+}
+
+.step-number {
+     text-align: center;
+     margin-top: 8px;
+     font-size: 16.5px;
+     color: rgb(0, 10, 56);
+     font-weight: bold;
+}
+.next-prev {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     width: 93%;
+     margin-left: auto;
+     margin-top: 20px;
+ }
+.next-prev button {
+     border-radius: 5px;
+     width: 45%;
+     height: 73px;
+     background: var(--primary-gradiant);
+     font-size: 20px;
+     color: rgb(255, 255, 255);
+     font-weight: bold;
+     font-size: 20px;
+     border: 0;
+     text-transform: capitalize;
+     margin-bottom: 20px;
+}
+
+.next-prev button i {
+     margin: 0 8px;
+}
+
+.resultheader {
+     background-color: var(--secondary-color);
+     border-radius: 4px;
+     height: 150px;
+     width: 80%;
+     margin: 0 auto;
+     font-size: 40px;
+     color: rgb(255, 255, 255);
+     font-family: "Sen";
+     font-weight: 700;
+     text-align: center;
+     display: grid;
+     align-content: center;
+     padding: 20px 160px;
+     position: relative;
+     top: 80px;
+     overflow: hidden;
+
+}
+
+.resultheader::before {
+     content: "";
+     background: var(--primary-color);
+     width: 80px;
+     height: 80px;
+     border-radius: 0;
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     clip-path: polygon(0 0, 50% 50%, 100% 100%, 0% 100%);
+}
+
+.resultheader::after {
+     content: "";
+     background: var(--primary-color);
+     width: 150px;
+     height: 100%;
+     border-radius: 0;
+     position: absolute;
+     right: 0;
+     bottom: 0;
+     clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.h-border {
+     position: absolute;
+     background: rgb(212, 11, 33);
+     clip-path: polygon(0 15%, 10% 15%, 10% 90%, 100% 90%, 100% 100%, 0 100%, 0 50%);
+     width: 150px;
+     height: 100%;
+     top: -10px;
+     right: -40px;
+     transform: rotate(45deg);
+     z-index: 10;
+     border: solid 2px red;
+}
+
+.result_msg img {
+     width: 35px;
+}
+
+.result_msg {
+     font-size: 42px;
+     font-family: 'Jost', sans-serif;
+     color: rgb(39, 194, 15);
+     font-weight: bold;
+     display: flex;
+     align-items: center;
+}
+
+.result_content {
+     flex: 1;
+     border-radius: 20px;
+     width: 100%;
+     border: 4px solid var(--primary-color);
+     padding: 120px 90px 50px 90px;
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+}
+
+.result_content span {
+     font-size: 20px;
+     font-family: 'Sen', sans-serif;
+     color: rgb(0, 0, 0);
+     font-weight: bold;
+     text-transform: uppercase;
+     text-align: center;
+     margin-top: 60px;
+}
+
+.u_prcnt {
+     font-size: 190px;
+     font-family: "Sen";
+     color: rgb(255, 89, 0);
+     font-weight: bold;
+     letter-spacing: -10px;
+     line-height: 1;
+}
+
+.prcnt_bar {
+     background-color: rgb(232, 232, 232);
+     width: 333px;
+     height: 12px;
+     border-radius: 20px;
+}
+
+.prcnt_bar .fill {
+     width: 80%;
+     border-radius: inherit;
+     height: 100%;
+     background-color: rgb(39, 194, 15);
+     ;
+}
+
+.prcnt_bar_lvl {
+     font-size: 30px;
+     font-family: "Sen";
+     color: rgb(255, 89, 0);
+     font-weight: bold;
+     margin-top: 10px;
+}
+
+.lvl_overview {
+     display: flex;
+     width: 100%;
+     flex-direction: row;
+     flex-wrap: wrap;
+     align-items: center;
+     height: auto;
+     margin-top: 30px;
+     justify-content: center;
+}
+
+.lvl-single {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+     width: 33.3333%;
+}
+
+.lvl-single .lvl-color {
+     border-radius: 50%;
+     min-width: 53px;
+     height: 53px;
+}
+
+.lvl-single .lvl-name {
+     font-size: 30px;
+     font-family: "Sen";
+     color: rgb(0, 0, 0);
+     font-weight: bold;
+     margin-left: 30px;
+}
+
+.lvl-single .lvl-line {
+     background-color: rgb(232, 232, 232);
+     min-width: 114px;
+     height: 6px;
+     border-radius: 5px;
+     margin: 0 auto;
+}
+
+.lvl-single .low {
+     background-color: rgb(229, 0, 26);
+}
+
+.lvl-single .medium {
+     background-color: rgb(255, 89, 0);
+}
+
+.lvl-single .high {
+     background-color: rgb(60, 196, 52);
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Jost&family=Sen&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+          integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="style/quiz.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+     <div class="container">
+
+          <div class="show-section wrapper">
+               <!-- step 1 -->
+               <section class="question-container">
+
+                    <!-- header -->
+                    <header>
+                         The logo For Luxury Car Maker Porsche Features Which Animal?
+                         <div class="h-border"></div>
+                    </header>
+
+                    <!-- form area -->
+                    <div class="quiz-inner">
+                         <div class="row flex-1">
+                              <div class="tab-none col-md-5">
+
+                                   <!-- side area -->
+                                   <div class="side">
+                                        <img class="sideimg" src="./assets/image/quiz/side-1.png" alt="side-image">
+                                        <img class="question" src="./assets/image/quiz/question-sign.png" alt="question">
+                                   </div>
+                              </div>
+                              <div class="tab-100 col-md-7">
+                                   <!-- form 1 -->
+                                   <form id="step1" method="post" novalidate="">
+                                        <div class="form-inner">
+                                             <div class="row">
+
+                                             </div>
+                                        </div>
+                                        <div class="next-prev">
+                                             <button class="prev" type="button">
+                                                  <i class="fa-solid fa-arrow-left"></i>previous question
+                                             </button>
+                                             <button id="step1btn" class="next" type="button">
+                                                  next question<i class="fa-solid fa-arrow-right"></i>
+                                             </button>
+                                        </div>
+                                   </form>
+                              </div>
+                         </div>
+                    </div>
+
+                    <!-- footer -->
+                    <footer>
+                         <div class="step-bar">
+                              <div class="fill"></div>
+                         </div>
+                         <div class="step-number">
+                              Question <span>1</span> / 5
+                         </div>
+                    </footer>
+               </section>
+          </div>
+          <div class="result_page result_page_show d-none">
+               <div class="container">
+                    <div class="result_inner">
+
+                         <!-- header -->
+                         <header class="resultheader">
+                              Your Result is there
+                              <div class="h-border"></div>
+                         </header>
+
+                         <div class="result_content">
+                           <div class="d-flex">
+                              <img class="my-auto" src="./assets/image/quiz/check.png" alt="check" />
+                              <div class="result_msg" style="color: rgb(60, 196, 52);">
+                                   Wow! You are Brilliant!</div>
+                           </div>
+                              <span>your overall score</span>
+                              <div class="u_prcnt" style="color: rgb(60, 196, 52);">80%</div>
+                              <div class="prcnt_bar">
+                                   <div class="fill" style="width: 80%; background-color: rgb(60, 196, 52);"></div>
+                              </div>
+                              <div class="prcnt_bar_lvl" style="color: rgb(60, 196, 52);">High</div>
+                              <div class="lvl_overview">
+                                   <div class="lvl-single">
+                                        <div class="lvl-color low"></div>
+                                        <div class="lvl-name ">Low</div>
+                                        <div class="lvl-line"></div>
+                                   </div>
+                                   <div class="lvl-single">
+                                        <div class="lvl-color medium"></div>
+                                        <div class="lvl-name ">Medium</div>
+                                        <div class="lvl-line"></div>
+                                   </div>
+                                   <div class="lvl-single">
+                                        <div class="lvl-color high"></div>
+                                        <div class="lvl-name">High</div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <footer class="resultfooter"></footer>
+
+                    </div>
+               </div>
+
+          </div>
+          <script src="scripts/quiz.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
+               integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
+               crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     </div>
+</body>
+
+</html>
