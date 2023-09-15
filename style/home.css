@@ -245,7 +245,10 @@ button:hover {
      text-align: center;
      margin: 1rem;
 }
-
+.slider-container i {
+     font-weight: 900;
+  color: #222222;
+}
 @keyframes pillAnimation {
      0% {
           opacity: 0.8;
@@ -468,10 +471,16 @@ button:hover {
      background-color: var(--orange);
      color: #fff;
      font-weight: 900;
-     font-size: 2rem;
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif 'Times New Roman', serif;
      transition: 0.4s;
      cursor: pointer;
+}
+
+
+.panels .dynamic-ads .btns button i {
+   font-size: 1.1rem;
+     font-weight: 900;
+
 }
 
 
