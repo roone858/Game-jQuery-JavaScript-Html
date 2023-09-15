@@ -62,9 +62,11 @@ const prcnt_bar = document.querySelector(".prcnt_bar .fill");
 const prcnt_bar_lvl = document.querySelector(".prcnt_bar_lvl");
 const form = document.querySelector(".form-inner .row");
 const questionContainer = document.querySelector(".question-container");
+const stepBar = document.querySelector(".step-bar .fill");
+const stepNumber = document.querySelector(".step-number span");
 let step = 0;
 let userChoices = {};
-
+changeBar()
 createFourOptions(step, mixedQuestions[step].options);
 function createChoice(radioNum, name, value) {
   const col = document.createElement("div");
@@ -95,7 +97,9 @@ function createChoice(radioNum, name, value) {
 prevBtn.classList.add("d-none");
 prevBtn.addEventListener("click", () => {
   step--;
+  changeBar();
   createFourOptions(step, mixedQuestions[step].options);
+  step == 8 && (nextBtn.textContent = "Next Question!");
   if (step == 0) prevBtn.classList.add("d-none");
   console.log(step);
 });
@@ -103,12 +107,18 @@ prevBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
   if (!getAnswer(step)) return;
   step++;
+  changeBar()
   step == 9 && (nextBtn.textContent = "Submit!");
   step <= 9
     ? createFourOptions(step, mixedQuestions[step].options)
     : showResultPage();
   step > 0 && prevBtn.classList.remove("d-none");
 });
+
+function changeBar() {
+  stepBar.style.width = step + 1 + "0%";
+  stepNumber.textContent = step + 1;
+}
 
 function getAnswer(questionNumber) {
   const checked = document.querySelector(".radio-field input:checked");
@@ -127,7 +137,7 @@ function showResultPage() {
   result_page.classList.remove("d-none");
   questionContainer.classList.add("d-none");
   const result = correctingTest(userChoices);
-  console.log(result);
+ 
   const { color, message, level } = resultColorAndMessageAndLevel(result);
   u_prcnt.textContent = result + "%";
   u_prcnt.style.color = color;

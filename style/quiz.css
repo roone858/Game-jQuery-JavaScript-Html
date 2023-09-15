@@ -18,7 +18,7 @@ header {
      height: 150px;
      width: 80%;
      margin: 0 auto;
- 
+
      color: rgb(255, 255, 255);
      font-weight: 600;
      text-align: center;
@@ -57,7 +57,7 @@ header::before {
 .steps {
      display: flex;
      flex-direction: column;
-     min-height: 100vh;
+    
 }
 
 .quiz-inner {
@@ -82,10 +82,12 @@ header::before {
 .flex-1 {
      flex: 1;
 }
-.result_content img{
+
+.result_content img {
      max-height: 50px;
      margin-right: 15px;
 }
+
 .side img:nth-child(1) {
      width: 80%;
      position: absolute;
@@ -176,11 +178,13 @@ form {
      align-items: center;
      transition: 0.4s all;
 }
-.radio-field input:checked::before     {
+
+.radio-field input:checked::before {
      content: "";
      border-color: var(--primary-color);
      /* background-color: var(--primary-color); */
 }
+
 .radio-field input:checked::after {
      content: "";
      position: absolute;
@@ -193,7 +197,8 @@ form {
      border-radius: 3px;
      transform: rotate(-45deg);
      opacity: 0;
- }
+}
+
 .radio1::before {
      content: "A";
 
@@ -219,34 +224,34 @@ form {
 .delay-100 {
      animation-delay: 100ms;
 }
-.bounce-right
-{
-    animation: bounceright 0.6s forwards linear;
-    opacity: 1;
+
+.bounce-right {
+     animation: bounceright 0.6s forwards linear;
+     opacity: 1;
 }
-.radio-field input:checked{
+
+.radio-field input:checked {
      border-color: var(--primary-color);
 
 }
-@keyframes bounceright
-{
-    0%
-    {
-        opacity: 1;
+
+@keyframes bounceright {
+     0% {
+          opacity: 1;
      }
-     100%
-     {
-        opacity: 0;
+
+     100% {
+          opacity: 0;
      }
 }
 
 
-.checkmark:checked::after
-{
+.checkmark:checked::after {
      transform-origin: left top;
      animation: checkmark linear both 0.2s;
      animation-delay: 0.1s;
- }
+}
+
 @keyframes bounceleft {
      0% {
           opacity: 0;
@@ -256,72 +261,66 @@ form {
           opacity: 1;
      }
 }
-@keyframes checkmark
-{
-      0%
-      {
-        height: 0px;
-        width: 0;
-        opacity: 0;
-        right: 75px;
-      }
-      30%
-      {
-        height: 15px;
-        width: 0;
-        opacity: 1;
-        right: 75px;
-      }
-      to
-      {
-        height: 15px;
-        width: 25px;
-        opacity: 1;
-      }
+
+@keyframes checkmark {
+     0% {
+          height: 0px;
+          width: 0;
+          opacity: 0;
+          right: 75px;
+     }
+
+     30% {
+          height: 15px;
+          width: 0;
+          opacity: 1;
+          right: 75px;
+     }
+
+     to {
+          height: 15px;
+          width: 25px;
+          opacity: 1;
+     }
 }
 
 
-.prev:hover i
-{
-    animation: right .4s forwards;
-}
-.next:hover i
-{
-    animation: left .4s forwards;
+.prev:hover i {
+     animation: right .4s forwards;
 }
 
-@keyframes right
-{
-    0%
-    {
-        transform: translateX(0px);
-    }
-    100%
-    {
-        transform: translateX(-10px);
-    }
+.next:hover i {
+     animation: left .4s forwards;
 }
-@keyframes left
-{
-    0%
-    {
-        transform: translateX(0px);
-    }
-    100%
-    {
-        transform: translateX(10px);
-    }
+
+@keyframes right {
+     0% {
+          transform: translateX(0px);
+     }
+
+     100% {
+          transform: translateX(-10px);
+     }
 }
-.h-border
-{
-    animation: q-reveal 0.5s linear forwards;
+
+@keyframes left {
+     0% {
+          transform: translateX(0px);
+     }
+
+     100% {
+          transform: translateX(10px);
+     }
 }
-@keyframes q-reveal
-{
-    from
-    {
-        transform: translateX(200px);
-    }
+
+.h-border {
+     animation: q-reveal 0.5s linear forwards;
+}
+
+@keyframes q-reveal {
+     from {
+          transform: translateX(200px);
+     }
 }
 
 footer {
@@ -338,6 +337,16 @@ footer {
      overflow: hidden;
 }
 
+.step-bar .fill {
+
+     width: 0%;
+     background-color: var(--primary-color);
+     height: 30px;
+     transition: 0.3s;
+
+}
+
+
 .step-number {
      text-align: center;
      margin-top: 8px;
@@ -345,6 +354,7 @@ footer {
      color: rgb(0, 10, 56);
      font-weight: bold;
 }
+
 .next-prev {
      display: flex;
      flex-wrap: wrap;
@@ -352,7 +362,8 @@ footer {
      width: 93%;
      margin-left: auto;
      margin-top: 20px;
- }
+}
+
 .next-prev button {
      border-radius: 5px;
      width: 45%;
